@@ -7,9 +7,9 @@ databaseChangeLog:
             tableName: roles
             columns:
               - column:
-                  { name: name, value: "COMPANY_OWNER" }
+                  { name: name, value: "ROLE_COMPANY_OWNER" }
         - insert:
             tableName: roles
             columns:
               - column:
-                  { name: name, value: "ADMIN" }
+                  { name: name, value: "ROLE_ADMIN" }

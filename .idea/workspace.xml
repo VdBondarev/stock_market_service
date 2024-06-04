@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/06-insert-roles.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/06-insert-roles.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +69,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -79,10 +85,10 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.bond.exception" />
+      <recent name="com.bond.dto.company" />
       <recent name="com.bond.annotation.validator" />
       <recent name="com.bond.mapper" />
       <recent name="com.bond.repository" />
-      <recent name="com.bond.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/bond/security" />
@@ -92,8 +98,8 @@
       <recent name="$PROJECT_DIR$/src/main/resources/db/changelog" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.bond.annotation" />
       <recent name="com.bond.config" />
+      <recent name="com.bond.annotation" />
     </key>
   </component>
   <component name="RunManager" selected="Remote JVM Debug.Unnamed">
@@ -201,7 +207,7 @@
       <workItem from="1717426649472" duration="3003000" />
       <workItem from="1717429666415" duration="3896000" />
       <workItem from="1717478236686" duration="6337000" />
-      <workItem from="1717484958544" duration="4059000" />
+      <workItem from="1717484958544" duration="13265000" />
     </task>
     <servers />
   </component>
@@ -212,24 +218,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/controller/AuthController.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/bond/security/CustomUserDetailsService.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/security/AuthenticationService.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/bond/security/JwtAuthenticationFilter.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/security/AuthenticationService.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/exception/GlobalExceptionHandler.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/bond/model/User.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

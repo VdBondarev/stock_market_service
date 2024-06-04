@@ -35,8 +35,8 @@ public class Role implements GrantedAuthority {
     }
 
     public enum RoleName {
-        COMPANY_OWNER,
-        ADMIN;
+        ROLE_COMPANY_OWNER,
+        ROLE_ADMIN;
 
         @Override
         public String toString() {
