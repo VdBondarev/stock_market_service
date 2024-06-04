@@ -14,5 +14,5 @@ public interface UserService {
 
     List<UserResponseDto> getAll(Pageable pageable);
 
-    UserResponseDto update(Long id, String roleName);
+    UserResponseDto updateRole(Long id, String roleName);
 }

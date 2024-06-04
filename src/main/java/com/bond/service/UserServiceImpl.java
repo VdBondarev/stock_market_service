@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDto update(Long id, String roleName) {
+    public UserResponseDto updateRole(Long id, String roleName) {
         User user = userRepository.findByIdWithRoles(id)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "User with id " + id + " not found")

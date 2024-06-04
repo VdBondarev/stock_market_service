@@ -43,6 +43,6 @@ public class UserController {
             @PathVariable Long id,
             @RequestParam("role") String roleName
     ) {
-        return userService.update(id, roleName);
+        return userService.updateRole(id, roleName);
     }
 }
