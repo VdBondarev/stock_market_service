@@ -20,4 +20,11 @@ public class ReportDetails {
     private FinancialData financialData;
 
     private String comments;
+
+    private Type type;
+
+    public enum Type {
+        CREATE,
+        UPDATE
+    }
 }

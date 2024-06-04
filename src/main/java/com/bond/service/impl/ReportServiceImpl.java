@@ -4,6 +4,7 @@ import static java.time.LocalDateTime.now;
 
 import com.bond.dto.report.CreateReportRequestDto;
 import com.bond.dto.report.ReportResponseDto;
+import com.bond.dto.report.UpdateReportRequestDto;
 import com.bond.mapper.ReportMapper;
 import com.bond.model.Company;
 import com.bond.model.Report;
@@ -28,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class ReportServiceImpl implements ReportService {
+    private static final int TWO = 2;
     private final ReportRepository reportRepository;
     private final ReportMapper reportMapper;
     private final ReportDetailsRepository reportDetailsRepository;
@@ -54,27 +56,52 @@ public class ReportServiceImpl implements ReportService {
     @Override
     @Transactional
     public ReportResponseDto create(CreateReportRequestDto requestDto, User user) {
-        // a check if a company exists
-        Company company = companyRepository.findById(requestDto.getCompanyId())
-                .orElseThrow(() -> new EntityNotFoundException(
-                        "Company with id "
-                                + requestDto.getCompanyId()
-                                + " not found. Report is not created")
-                );
-        if (!company.getOwnerId().equals(user.getId())) {
+        Company company = findCompanyById(requestDto.getCompanyId());
+        if (!allowedToInteract(company, user)) {
             throw new IllegalArgumentException(
-                    "You cannot create a report for this company. You are not its owner"
+                    "You are now allowed to create a report for this company"
             );
         }
         Report report = reportMapper.toModel(requestDto);
         report.setReportDate(now());
         reportRepository.save(report);
-        ReportDetails reportDetails = createReportDetails(report);
+        ReportDetails reportDetails = createReportDetails(report, ReportDetails.Type.CREATE);
         reportDetailsRepository.save(reportDetails);
         return reportMapper.toResponseDto(report);
     }
 
-    private ReportDetails createReportDetails(Report report) {
+    @Override
+    public void delete(UUID id) {
+        reportRepository.deleteById(id);
+    }
+
+    @Override
+    public ReportResponseDto update(UUID reportId, UpdateReportRequestDto requestDto) {
+        Report report = reportRepository
+                .findById(reportId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Report with id " + reportId + " not found")
+                );
+        reportMapper.updateModel(report, requestDto);
+        reportRepository.save(report);
+        ReportDetails reportDetails = createReportDetails(report, ReportDetails.Type.UPDATE);
+        reportDetailsRepository.save(reportDetails);
+        return reportMapper.toResponseDto(report);
+    }
+
+    private boolean allowedToInteract(Company company, User user) {
+        return company.getOwnerId().equals(user.getId()) || user.getRoles().size() != TWO;
+    }
+
+    private Company findCompanyById(UUID id) {
+        return companyRepository
+                .findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Company with id " + id + " not found")
+                );
+    }
+
+    private ReportDetails createReportDetails(Report report, ReportDetails.Type type) {
         FinancialData financialData = new FinancialData()
                 .setNetProfit(report.getNetProfit())
                 .setTotalRevenue(report.getTotalRevenue());
@@ -94,6 +121,7 @@ public class ReportServiceImpl implements ReportService {
                         + report.getCompanyId()
                         + " created "
                         + report.getReportDate()
-        );
+        )
+                .setType(type);
     }
 }
