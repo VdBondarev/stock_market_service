@@ -37,10 +37,25 @@ public class Role implements GrantedAuthority {
     public enum RoleName {
         ROLE_COMPANY_OWNER,
         ROLE_ADMIN;
+        private static final int ONE = 1;
 
         @Override
         public String toString() {
             return name();
+        }
+
+        public static RoleName fromString(String value) {
+            boolean equalsSubstring;
+            for (RoleName role : RoleName.values()) {
+                equalsSubstring =
+                        role.name()
+                                .substring(role.name().indexOf("_") + ONE)
+                                .equalsIgnoreCase(value);
+                if (role.name().equalsIgnoreCase(value) || equalsSubstring) {
+                    return role;
+                }
+            }
+            throw new IllegalArgumentException("Unknown enum value: " + value);
         }
     }
 }
