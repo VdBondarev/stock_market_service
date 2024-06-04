@@ -36,7 +36,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: created_at
-                  type: DATE
+                  type: TIMESTAMP
                   constraints:
                     nullable: false
               - column:

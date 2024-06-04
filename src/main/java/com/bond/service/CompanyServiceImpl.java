@@ -1,5 +1,7 @@
 package com.bond.service;
 
+import static java.time.LocalDateTime.now;
+
 import com.bond.dto.company.CompanyResponseDto;
 import com.bond.dto.company.CompanyUpdateRequestDto;
 import com.bond.dto.company.CreateCompanyRequestDto;
@@ -39,6 +41,7 @@ public class CompanyServiceImpl implements CompanyService {
             );
         }
         Company company = companyMapper.toModel(requestDto);
+        company.setCreatedAt(now());
         company.setOwnerId(user.getId());
         return companyMapper.toDto(companyRepository.save(company));
     }

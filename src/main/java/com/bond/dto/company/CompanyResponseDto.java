@@ -1,6 +1,6 @@
 package com.bond.dto.company;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +11,6 @@ public class CompanyResponseDto {
     private String name;
     private String registrationNumber;
     private String address;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     private Long ownerId;
 }

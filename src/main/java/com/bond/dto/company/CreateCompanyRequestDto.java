@@ -1,8 +1,6 @@
 package com.bond.dto.company;
 
-import java.time.LocalDate;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +13,4 @@ public class CreateCompanyRequestDto {
     private String registrationNumber;
     @NotBlank
     private String address;
-    @NotNull
-    private LocalDate createdAt;
 }
