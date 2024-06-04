@@ -31,7 +31,7 @@ public class CompanyServiceImpl implements CompanyService {
     public List<CompanyResponseDto> getAll(Pageable pageable) {
         return companyRepository.findAll(pageable)
                 .stream()
-                .map(companyMapper::toDto)
+                .map(companyMapper::toResponseDto)
                 .collect(Collectors.toList());
     }
 
@@ -45,13 +45,13 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = companyMapper.toModel(requestDto);
         company.setCreatedAt(now());
         company.setOwnerId(user.getId());
-        return companyMapper.toDto(companyRepository.save(company));
+        return companyMapper.toResponseDto(companyRepository.save(company));
     }
 
     @Override
     public CompanyResponseDto getById(UUID id) {
         return companyRepository.findById(id)
-                .map(companyMapper::toDto)
+                .map(companyMapper::toResponseDto)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Company with id " + id + " not found"));
     }
@@ -80,7 +80,7 @@ public class CompanyServiceImpl implements CompanyService {
         }
         if (isValid(requestDto)) {
             companyMapper.updateModel(company, requestDto);
-            return companyMapper.toDto(companyRepository.save(company));
+            return companyMapper.toResponseDto(companyRepository.save(company));
         }
         throw new IllegalArgumentException(
                 "Update request is not valid. "
@@ -92,7 +92,7 @@ public class CompanyServiceImpl implements CompanyService {
     public List<CompanyResponseDto> getMine(User user, Pageable pageable) {
         return companyRepository.findAllByOwnerId(user.getId(), pageable)
                 .stream()
-                .map(companyMapper::toDto)
+                .map(companyMapper::toResponseDto)
                 .collect(Collectors.toList());
     }
 

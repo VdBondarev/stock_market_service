@@ -1,17 +1,18 @@
 package com.bond.dto.report;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.UUID;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ReportResponseDto {
-    private UUID id;
+public class CreateReportRequestDto {
+    @NotNull
     private UUID companyId;
-    private LocalDateTime reportDate;
+    @NotNull
     private BigDecimal totalRevenue;
+    @NotNull
     private BigDecimal netProfit;
 }

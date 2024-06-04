@@ -24,11 +24,11 @@ public class Report {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID",
-            strategy = "com.bond.generator.UuidGenerator")
+            strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
 
     @Column(nullable = false)
-    private Long companyId;
+    private UUID companyId;
 
     @Column(nullable = false)
     private LocalDateTime reportDate;
