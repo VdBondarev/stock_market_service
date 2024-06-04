@@ -8,6 +8,7 @@ import com.bond.service.CompanyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
+import java.util.UUID;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -43,7 +44,7 @@ public class CompanyController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get a company by id")
-    public CompanyResponseDto getById(@PathVariable String id) {
+    public CompanyResponseDto getById(@PathVariable UUID id) {
         return companyService.getById(id);
     }
 
@@ -59,7 +60,7 @@ public class CompanyController {
                     + "You are allowed to update name of the company or address only. "
                     + "If name already exists, update will not be performed")
     public CompanyResponseDto update(
-            @PathVariable String id,
+            @PathVariable UUID id,
             @RequestBody CompanyUpdateRequestDto requestDto,
             Authentication authentication
     ) {
@@ -80,7 +81,7 @@ public class CompanyController {
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Delete a company by id",
             description = "Allowed for admins only")
-    public void deleteById(@PathVariable String id) {
+    public void deleteById(@PathVariable UUID id) {
         companyService.deleteById(id);
     }
 

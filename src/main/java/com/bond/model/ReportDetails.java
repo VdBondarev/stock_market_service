@@ -12,4 +12,6 @@ public class ReportDetails {
 
     @Column(nullable = false)
     private FinancialData financialData;
+
+    private String comments;
 }

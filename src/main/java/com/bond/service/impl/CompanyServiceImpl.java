@@ -1,4 +1,4 @@
-package com.bond.service;
+package com.bond.service.impl;
 
 import static java.time.LocalDateTime.now;
 
@@ -9,8 +9,10 @@ import com.bond.mapper.CompanyMapper;
 import com.bond.model.Company;
 import com.bond.model.User;
 import com.bond.repository.CompanyRepository;
+import com.bond.service.CompanyService;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +49,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyResponseDto getById(String id) {
+    public CompanyResponseDto getById(UUID id) {
         return companyRepository.findById(id)
                 .map(companyMapper::toDto)
                 .orElseThrow(() -> new EntityNotFoundException(
@@ -55,12 +57,12 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(UUID id) {
         companyRepository.deleteById(id);
     }
 
     @Override
-    public CompanyResponseDto update(String id, CompanyUpdateRequestDto requestDto, User user) {
+    public CompanyResponseDto update(UUID id, CompanyUpdateRequestDto requestDto, User user) {
         Company company = companyRepository.findById(id)
                 .orElseThrow(
                         () -> new EntityNotFoundException("Company with id " + id + " not found")
