@@ -43,9 +43,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(body, headers, status);
     }
 
-    @ExceptionHandler({EntityNotFoundException.class,
+    @ExceptionHandler({
+            EntityNotFoundException.class,
             RegistrationException.class,
-            IllegalArgumentException.class})
+            IllegalArgumentException.class
+    })
     public ResponseEntity<Object> handleExceptions(Exception ex, WebRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         Map<String, Object> body = new LinkedHashMap<>();

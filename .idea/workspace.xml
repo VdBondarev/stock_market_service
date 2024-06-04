@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="" />
+    <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/details/ReportDetailsResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportDetailsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/controller/CompanyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/ReportServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -78,11 +90,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.bond.exception" />
-      <recent name="com.bond.dto.company" />
-      <recent name="com.bond.annotation.validator" />
       <recent name="com.bond.mapper" />
       <recent name="com.bond.repository" />
+      <recent name="com.bond.dto.report" />
+      <recent name="com.bond.service" />
+      <recent name="com.bond.exception" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/bond/security" />
@@ -202,7 +214,9 @@
       <workItem from="1717429666415" duration="3896000" />
       <workItem from="1717478236686" duration="6337000" />
       <workItem from="1717484958544" duration="13265000" />
-      <workItem from="1717504043433" duration="1500000" />
+      <workItem from="1717504043433" duration="7062000" />
+      <workItem from="1717512587968" duration="1737000" />
+      <workItem from="1717530020045" duration="2549000" />
     </task>
     <servers />
   </component>
@@ -212,20 +226,23 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/security/CustomUserDetailsService.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="8" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java</url>
+          <line>15</line>
+          <properties class="com.bond.mapper.CompanyMapper" method="toModel">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/security/JwtAuthenticationFilter.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/model/User.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="10" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java</url>
+          <line>13</line>
+          <properties class="com.bond.mapper.CompanyMapper" method="toDto">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

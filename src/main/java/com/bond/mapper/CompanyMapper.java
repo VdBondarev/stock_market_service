@@ -11,7 +11,7 @@ import org.mapstruct.MappingTarget;
 @Mapper(config = MapperConfig.class)
 public interface CompanyMapper {
 
-    CompanyResponseDto toDto(Company company);
+    CompanyResponseDto toResponseDto(Company company);
 
     Company toModel(CreateCompanyRequestDto requestDto);
 

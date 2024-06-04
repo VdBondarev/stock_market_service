@@ -6,8 +6,6 @@ services:
       - .env
     environment:
       MONGO_INITDB_DATABASE: ${MY_MONGO_INITDB_DATABASE}
-      MONGO_INITDB_ROOT_USERNAME: ${MY_MONGO_INITDB_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MY_MONGO_INITDB_PASSWORD}
     ports:
       - "${MONGODB_DOCKER_PORT}:${MONGODB_LOCAL_PORT}"
 
@@ -45,6 +43,6 @@ services:
         "spring.datasource.password": "${POSTGRESQL_PASSWORD}",
         "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.PostgreSQLDialect"
       }'
-      SPRING_DATA_MONGODB_URI: "mongodb://${MY_MONGO_INITDB_USERNAME}:${MY_MONGO_INITDB_PASSWORD}@mongodb:${MONGODB_DOCKER_PORT}/${MY_MONGO_INITDB_DATABASE}?authSource=admin"
+      SPRING_DATA_MONGODB_URI: "mongodb://mongodb:${MONGODB_DOCKER_PORT}/${MY_MONGO_INITDB_DATABASE}"
       SPRING_SERVER_PORT: ${SPRING_DOCKER_PORT}
       JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"

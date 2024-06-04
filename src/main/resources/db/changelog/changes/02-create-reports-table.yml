@@ -8,13 +8,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: VARCHAR(255)
+                  type: UUID
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: company_id
-                  type: BIGINT
+                  type: UUID
                   constraints:
                     nullable: false
               - column:

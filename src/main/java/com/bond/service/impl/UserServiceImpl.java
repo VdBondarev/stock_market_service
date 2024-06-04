@@ -1,4 +1,4 @@
-package com.bond.service;
+package com.bond.service.impl;
 
 import com.bond.dto.user.UserRegistrationRequestDto;
 import com.bond.dto.user.UserResponseDto;
@@ -7,6 +7,7 @@ import com.bond.mapper.UserMapper;
 import com.bond.model.Role;
 import com.bond.model.User;
 import com.bond.repository.UserRepository;
+import com.bond.service.UserService;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

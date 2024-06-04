@@ -5,6 +5,7 @@ import com.bond.dto.company.CompanyUpdateRequestDto;
 import com.bond.dto.company.CreateCompanyRequestDto;
 import com.bond.model.User;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.data.domain.Pageable;
 
 public interface CompanyService {
@@ -13,11 +14,11 @@ public interface CompanyService {
 
     CompanyResponseDto create(CreateCompanyRequestDto requestDto, User user);
 
-    CompanyResponseDto getById(String id);
+    CompanyResponseDto getById(UUID id);
 
-    void deleteById(String id);
+    void deleteById(UUID id);
 
-    CompanyResponseDto update(String id, CompanyUpdateRequestDto requestDto, User user);
+    CompanyResponseDto update(UUID id, CompanyUpdateRequestDto requestDto, User user);
 
     List<CompanyResponseDto> getMine(User user, Pageable pageable);
 }

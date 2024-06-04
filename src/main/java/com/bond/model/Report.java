@@ -2,6 +2,7 @@ package com.bond.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,11 +24,11 @@ public class Report {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID",
-            strategy = "com.bond.generator.UuidGenerator")
-    private String id;
+            strategy = "org.hibernate.id.UUIDGenerator")
+    private UUID id;
 
     @Column(nullable = false)
-    private Long companyId;
+    private UUID companyId;
 
     @Column(nullable = false)
     private LocalDateTime reportDate;

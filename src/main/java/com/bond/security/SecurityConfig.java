@@ -50,7 +50,8 @@ public class SecurityConfig {
                                         "/swagger-ui/**"
                                 )
                                 .permitAll()
-                                .anyRequest().authenticated()
+                                .anyRequest()
+                                .authenticated()
                 )
                 .httpBasic(withDefaults())
                 .sessionManagement(session ->

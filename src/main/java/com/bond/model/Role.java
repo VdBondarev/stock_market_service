@@ -38,6 +38,7 @@ public class Role implements GrantedAuthority {
         ROLE_COMPANY_OWNER,
         ROLE_ADMIN;
         private static final int ONE = 1;
+        private static final String SEPARATOR = "_";
 
         @Override
         public String toString() {
@@ -49,7 +50,7 @@ public class Role implements GrantedAuthority {
             for (RoleName role : RoleName.values()) {
                 equalsSubstring =
                         role.name()
-                                .substring(role.name().indexOf("_") + ONE)
+                                .substring(role.name().indexOf(SEPARATOR) + ONE)
                                 .equalsIgnoreCase(value);
                 if (role.name().equalsIgnoreCase(value) || equalsSubstring) {
                     return role;
