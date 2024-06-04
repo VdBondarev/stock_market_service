@@ -3,6 +3,7 @@ package com.bond.controller;
 import com.bond.dto.report.CreateReportRequestDto;
 import com.bond.dto.report.ReportResponseDto;
 import com.bond.dto.report.UpdateReportRequestDto;
+import com.bond.dto.report.details.ReportDetailsResponseDto;
 import com.bond.model.User;
 import com.bond.service.ReportService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,19 +44,34 @@ public class ReportController {
         return reportService.create(requestDto, getUser(authentication));
     }
 
+    @GetMapping("/all/{companyId}")
+    @Operation(summary = "Get all reports of a company")
+    public List<ReportResponseDto> getAllReportsForCompany(
+            @PathVariable UUID companyId,
+            Pageable pageable) {
+        return reportService.getAllReportsForCompany(companyId, pageable);
+    }
+
+    @GetMapping("/details/{reportId}")
+    @Operation(summary = "Get details of a report")
+    public ReportDetailsResponseDto getReportDetails(
+            @PathVariable UUID reportId
+    ) {
+        return reportService.getReportDetails(reportId);
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get a report by id")
+    public ReportResponseDto getById(@PathVariable UUID id) {
+        return reportService.getById(id);
+    }
+
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     @Operation(summary = "Gel all reports with pageable sorting",
             description = "Allowed for admins only")
     public List<ReportResponseDto> getAll(Pageable pageable) {
         return reportService.getAll(pageable);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{id}")
-    @Operation(summary = "Get a report by id", description = "Allowed for admins only")
-    public ReportResponseDto getById(@PathVariable UUID id) {
-        return reportService.getById(id);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

@@ -5,6 +5,8 @@ import static java.time.LocalDateTime.now;
 import com.bond.dto.report.CreateReportRequestDto;
 import com.bond.dto.report.ReportResponseDto;
 import com.bond.dto.report.UpdateReportRequestDto;
+import com.bond.dto.report.details.ReportDetailsResponseDto;
+import com.bond.mapper.ReportDetailsMapper;
 import com.bond.mapper.ReportMapper;
 import com.bond.model.Company;
 import com.bond.model.Report;
@@ -34,6 +36,7 @@ public class ReportServiceImpl implements ReportService {
     private final ReportMapper reportMapper;
     private final ReportDetailsRepository reportDetailsRepository;
     private final CompanyRepository companyRepository;
+    private final ReportDetailsMapper reportDetailsMapper;
 
     @Override
     public List<ReportResponseDto> getAll(Pageable pageable) {
@@ -56,10 +59,14 @@ public class ReportServiceImpl implements ReportService {
     @Override
     @Transactional
     public ReportResponseDto create(CreateReportRequestDto requestDto, User user) {
-        Company company = findCompanyById(requestDto.getCompanyId());
+        Company company = companyRepository
+                .findById(requestDto.getCompanyId())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Company with id " + requestDto.getCompanyId() + " not found")
+                );
         if (!allowedToInteract(company, user)) {
             throw new IllegalArgumentException(
-                    "You are now allowed to create a report for this company"
+                    "You are not allowed to create a report for this company"
             );
         }
         Report report = reportMapper.toModel(requestDto);
@@ -89,16 +96,25 @@ public class ReportServiceImpl implements ReportService {
         return reportMapper.toResponseDto(report);
     }
 
-    private boolean allowedToInteract(Company company, User user) {
-        return company.getOwnerId().equals(user.getId()) || user.getRoles().size() != TWO;
+    @Override
+    public List<ReportResponseDto> getAllReportsForCompany(UUID companyId, Pageable pageable) {
+        return reportRepository.findAllByCompanyId(companyId)
+                .stream()
+                .map(reportMapper::toResponseDto)
+                .collect(Collectors.toList());
     }
 
-    private Company findCompanyById(UUID id) {
-        return companyRepository
-                .findById(id)
+    @Override
+    public ReportDetailsResponseDto getReportDetails(UUID reportId) {
+        ReportDetails reportDetails = reportDetailsRepository.findByReportId(reportId)
                 .orElseThrow(() -> new EntityNotFoundException(
-                        "Company with id " + id + " not found")
+                        "Report details for a report with id " + reportId + " not found")
                 );
+        return reportDetailsMapper.toResponseDto(reportDetails);
+    }
+
+    private boolean allowedToInteract(Company company, User user) {
+        return company.getOwnerId().equals(user.getId()) || user.getRoles().size() != TWO;
     }
 
     private ReportDetails createReportDetails(Report report, ReportDetails.Type type) {

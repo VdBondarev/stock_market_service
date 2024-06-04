@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -64,9 +63,9 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public CompanyResponseDto update(UUID id, CompanyUpdateRequestDto requestDto, User user) {
         Company company = companyRepository.findById(id)
-                .orElseThrow(
-                        () -> new EntityNotFoundException("Company with id " + id + " not found")
-                );
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Company with id " + id + " not found"
+                ));
         if (companyRepository.findByName(requestDto.getName()).isPresent()) {
             throw new IllegalArgumentException(
                     "Company with name " + requestDto.getName() + " already exists"
@@ -74,7 +73,7 @@ public class CompanyServiceImpl implements CompanyService {
         }
         // check whether the user is the owner or an admin or not
         if (!Objects.equals(company.getOwnerId(), user.getId()) && user.getRoles().size() != TWO) {
-            throw new BadCredentialsException(
+            throw new IllegalArgumentException(
                     "You do not have permission to update this company"
             );
         }

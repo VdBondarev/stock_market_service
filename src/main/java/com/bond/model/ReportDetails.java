@@ -21,6 +21,7 @@ public class ReportDetails {
 
     private String comments;
 
+    @Column(nullable = false)
     private Type type;
 
     public enum Type {

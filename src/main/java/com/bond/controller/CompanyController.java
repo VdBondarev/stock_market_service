@@ -68,7 +68,7 @@ public class CompanyController {
     }
 
     @GetMapping("/mine")
-    @Operation(summary = "Get user's companies")
+    @Operation(summary = "Get your companies")
     public List<CompanyResponseDto> getMine(
             Authentication authentication,
             Pageable pageable

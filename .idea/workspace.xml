@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/UpdateReportRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/details/ReportDetailsResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportDetailsMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/controller/CompanyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/ReportDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/ReportDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/CompanyServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/ReportServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -86,9 +90,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bond.mapper" />
       <recent name="com.bond.repository" />
       <recent name="com.bond.dto.report" />
-      <recent name="com.bond.mapper" />
       <recent name="com.bond.service" />
       <recent name="com.bond.exception" />
     </key>
@@ -211,7 +215,8 @@
       <workItem from="1717478236686" duration="6337000" />
       <workItem from="1717484958544" duration="13265000" />
       <workItem from="1717504043433" duration="7062000" />
-      <workItem from="1717512587968" duration="1610000" />
+      <workItem from="1717512587968" duration="1737000" />
+      <workItem from="1717530020045" duration="2549000" />
     </task>
     <servers />
   </component>
@@ -221,11 +226,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/service/impl/CompanyServiceImpl.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java</url>
           <line>15</line>
@@ -243,15 +243,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/service/CompanyService.java</url>
-          <line>14</line>
-          <properties class="com.bond.service.CompanyService" method="create">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
