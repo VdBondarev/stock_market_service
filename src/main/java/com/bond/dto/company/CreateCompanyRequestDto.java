@@ -1,4 +1,4 @@
-package com.bond.dto;
+package com.bond.dto.company;
 
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotBlank;

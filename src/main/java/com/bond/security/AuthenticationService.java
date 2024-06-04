@@ -1,7 +1,7 @@
 package com.bond.security;
 
-import com.bond.dto.UserLoginRequestDto;
-import com.bond.dto.UserResponseDto;
+import com.bond.dto.user.UserLoginRequestDto;
+import com.bond.dto.user.UserLoginResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,13 +14,15 @@ public class AuthenticationService {
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
 
-    public UserResponseDto authenticate(UserLoginRequestDto requestDto) {
+    public UserLoginResponseDto authenticate(UserLoginRequestDto requestDto) {
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         requestDto.getEmail(), requestDto.getPassword()
                 )
         );
-        String token = jwtUtil.generateToken(authentication.getPrincipal());
-
+        String token = jwtUtil.generateToken(authentication.getName());
+        UserLoginResponseDto userLoginResponseDto = new UserLoginResponseDto();
+        userLoginResponseDto.setToken(token);
+        return userLoginResponseDto;
     }
 }

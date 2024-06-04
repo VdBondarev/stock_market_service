@@ -1,7 +1,7 @@
 package com.bond.service;
 
-import com.bond.dto.CompanyResponseDto;
-import com.bond.dto.CreateCompanyRequestDto;
+import com.bond.dto.company.CompanyResponseDto;
+import com.bond.dto.company.CreateCompanyRequestDto;
 import com.bond.mapper.CompanyMapper;
 import com.bond.model.Company;
 import com.bond.repository.CompanyRepository;
