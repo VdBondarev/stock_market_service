@@ -83,6 +83,14 @@ public class CompanyServiceImpl implements CompanyService {
         );
     }
 
+    @Override
+    public List<CompanyResponseDto> getMine(User user, Pageable pageable) {
+        return companyRepository.findAllByOwnerId(user.getId(), pageable)
+                .stream()
+                .map(companyMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     private boolean isValid(CompanyUpdateRequestDto requestDto) {
         return (requestDto.getName() == null || !requestDto.getName().isEmpty())
                 && (requestDto.getAddress() == null || !requestDto.getAddress().isEmpty());

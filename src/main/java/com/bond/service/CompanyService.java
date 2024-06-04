@@ -18,4 +18,6 @@ public interface CompanyService {
     void deleteById(String id);
 
     CompanyResponseDto update(String id, CompanyUpdateRequestDto requestDto, User user);
+
+    List<CompanyResponseDto> getMine(User user, Pageable pageable);
 }

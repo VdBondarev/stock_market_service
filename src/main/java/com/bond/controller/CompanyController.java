@@ -66,6 +66,15 @@ public class CompanyController {
         return companyService.update(id, requestDto, getUser(authentication));
     }
 
+    @GetMapping("/mine")
+    @Operation(summary = "Get user's companies")
+    public List<CompanyResponseDto> getMine(
+            Authentication authentication,
+            Pageable pageable
+    ) {
+        return companyService.getMine(getUser(authentication), pageable);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("hasRole('ADMIN')")
