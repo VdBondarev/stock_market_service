@@ -2,6 +2,7 @@ package com.bond.service;
 
 import com.bond.dto.user.UserRegistrationRequestDto;
 import com.bond.dto.user.UserResponseDto;
+import com.bond.exception.RegistrationException;
 import com.bond.mapper.UserMapper;
 import com.bond.model.Role;
 import com.bond.model.User;
@@ -20,7 +21,12 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public UserResponseDto register(UserRegistrationRequestDto requestDto) {
+    public UserResponseDto register(UserRegistrationRequestDto requestDto)
+            throws RegistrationException {
+        if (userRepository.findByEmailWithoutRoles(requestDto.getEmail()).isPresent()) {
+            throw new RegistrationException(
+                    "User with passed email already exists. Pick another one");
+        }
         User user = userMapper.toModel(requestDto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();

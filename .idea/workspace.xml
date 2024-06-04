@@ -5,34 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserRegistrationRequestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/generator/UuidGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/security/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/security/JwtUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/annotation/FieldMatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/annotation/StartsWithCapital.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/annotation/validator/PasswordMatchValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/annotation/validator/StartsWithCapitalValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bond/exception/RegistrationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/controller/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/CompanyResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/company/CompanyResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/CreateCompanyRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/company/CreateCompanyRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/UserLoginRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserLoginRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserLoginResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserLoginRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserLoginRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserRegistrationRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserRegistrationRequestDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/Company.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/Report.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/security/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/security/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/01-create-companies-table.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/01-create-companies-table.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/02-create-reports-table.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/02-create-reports-table.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/03-create-users-table.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/changes/03-create-users-table.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,8 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,11 +91,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bond.exception" />
+      <recent name="com.bond.annotation.validator" />
       <recent name="com.bond.mapper" />
       <recent name="com.bond.repository" />
       <recent name="com.bond.service" />
-      <recent name="com.bond.dto.user" />
-      <recent name="com.bond.security" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/bond/security" />
@@ -117,6 +105,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/db/changelog" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bond.annotation" />
       <recent name="com.bond.config" />
     </key>
   </component>
@@ -225,7 +214,7 @@
       <workItem from="1717426649472" duration="3003000" />
       <workItem from="1717429666415" duration="3896000" />
       <workItem from="1717478236686" duration="6337000" />
-      <workItem from="1717484958544" duration="990000" />
+      <workItem from="1717484958544" duration="3391000" />
     </task>
     <servers />
   </component>
@@ -237,7 +226,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bond/controller/AuthController.java</url>
-          <line>30</line>
+          <line>31</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

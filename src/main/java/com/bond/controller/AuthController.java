@@ -4,6 +4,7 @@ import com.bond.dto.user.UserLoginRequestDto;
 import com.bond.dto.user.UserLoginResponseDto;
 import com.bond.dto.user.UserRegistrationRequestDto;
 import com.bond.dto.user.UserResponseDto;
+import com.bond.exception.RegistrationException;
 import com.bond.security.AuthenticationService;
 import com.bond.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +36,7 @@ public class AuthController {
     @Operation(summary = "Registration endpoint")
     public UserResponseDto registration(
             @RequestBody @Valid UserRegistrationRequestDto requestDto
-    ) {
+    ) throws RegistrationException {
         return userService.register(requestDto);
     }
 }
