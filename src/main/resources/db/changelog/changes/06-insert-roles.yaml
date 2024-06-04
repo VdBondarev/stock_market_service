@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-roles-user-admin
+      author: VdBondarev
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  { name: name, value: "COMPANY_OWNER" }
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  { name: name, value: "ADMIN" }
