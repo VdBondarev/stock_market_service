@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-user-admin
+      author: VdBondarev
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  { name: email, value: "admin@example.com" }
+              - column:
+                  # password - 1234567890
+                  { name: password, value: "$2a$10$pgIWyO86Wu8MkPWRlSwWVeKa283CeLZjCQUco5k7avrLi6xGpu3je" }
+              - column:
+                  { name: first_name, value: "admin" }
+              - column:
+                  { name: last_name, value: "admin" }

@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user_roles-table
+      author: VdBondarev
+      changes:
+        - createTable:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: role_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+      rollback:
+        - dropTable:
+            tableName: user_roles

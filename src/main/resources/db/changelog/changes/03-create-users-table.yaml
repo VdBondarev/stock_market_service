@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-companies-table
+      id: create-users-table
       author: VdBondarev
       changes:
         - createTable:
-            tableName: companies
+            tableName: users
             columns:
               - column:
                   name: id
@@ -14,29 +14,24 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
-                  type: VARCHAR(255)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: registration_number
+                  name: email
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
                     unique: true
               - column:
-                  name: address
+                  name: password
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: owner_id
-                  type: BIGINT
+                  name: first_name
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: created_at
-                  type: TIMESTAMP
+                  name: last_name
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
@@ -47,4 +42,4 @@ databaseChangeLog:
                     nullable: false
       rollback:
         - dropTable:
-            tableName: companies
+            tableName: users

@@ -1,10 +1,8 @@
 package com.bond.dto;
 
-import javax.persistence.Column;
+import java.time.LocalDateTime;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 

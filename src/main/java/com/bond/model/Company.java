@@ -35,5 +35,8 @@ public class Company {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(nullable = false)
+    private Long ownerId;
+
     private boolean isDeleted = false;
 }

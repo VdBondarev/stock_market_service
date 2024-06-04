@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-user-roles-admin
+      author: VdBondarev
+      changes:
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  { name: user_id, value: "1" }
+              - column:
+                  { name: role_id, value: "1" }
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  { name: user_id, value: "1" }
+              - column:
+                  { name: role_id, value: "2" }
