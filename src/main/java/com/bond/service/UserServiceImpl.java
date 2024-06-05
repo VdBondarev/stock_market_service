@@ -81,6 +81,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.toResponseDto(user);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
+
     private boolean userIs(User user, Role.RoleName roleName) {
         if (roleName.equals(Role.RoleName.ROLE_COMPANY_OWNER)) {
             return user.getRoles().size() == ONE;

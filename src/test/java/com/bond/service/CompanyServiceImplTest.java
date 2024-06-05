@@ -30,6 +30,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import javax.persistence.EntityNotFoundException;
+
 @ExtendWith(MockitoExtension.class)
 class CompanyServiceImplTest {
 
@@ -154,6 +156,40 @@ class CompanyServiceImplTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    @Test
+    @DisplayName("Verify that getById() method works as expected with a valid id")
+    public void getById_ValidId_ReturnsValidResponseDto() {
+        UUID id = UUID.randomUUID();
+
+        Company company = createCompany(id);
+
+        CompanyResponseDto expectedResponseDto = createResponseDto(company);
+
+        when(companyRepository.findById(id)).thenReturn(Optional.of(company));
+        when(companyMapper.toResponseDto(company)).thenReturn(expectedResponseDto);
+
+        CompanyResponseDto actualResponseDto = companyServiceImpl.getById(id);
+
+        assertEquals(expectedResponseDto, actualResponseDto);
+    }
+
+    @Test
+    @DisplayName("Verify that getById() method throws an exception when a non-valid id is passed")
+    public void getById_NonValidPassedId_ThrowsException() {
+        UUID id = UUID.randomUUID();
+
+        when(companyRepository.findById(id)).thenReturn(Optional.empty());
+
+        EntityNotFoundException exception = assertThrows(
+                EntityNotFoundException.class, () -> companyServiceImpl.getById(id)
+        );
+
+        String expectedMessage = "Company with id " + id + " not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
     private Company createCompanyFromRequestDto(CreateCompanyRequestDto requestDto, Long userId) {
         return new Company()
                 .setId(UUID.randomUUID())
@@ -182,5 +218,4 @@ class CompanyServiceImplTest {
                 .setAddress("test")
                 .setRegistrationNumber("test");
     }
-
 }
