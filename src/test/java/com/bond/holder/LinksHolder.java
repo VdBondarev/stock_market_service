@@ -17,4 +17,6 @@ public abstract class LinksHolder {
             "classpath:database/remove-all-companies.sql";
     protected static final String INSERT_COMPANY_FILE_PATH =
             "classpath:database/insert-company-to-database.sql";
+    protected static final String INSERT_THREE_COMPANIES_FILE_PATH =
+            "classpath:database/insert-three-companies.sql";
 }
