@@ -11,15 +11,22 @@ import com.bond.mapper.UserMapper;
 import com.bond.model.Role;
 import com.bond.model.User;
 import com.bond.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import javax.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
@@ -39,7 +46,7 @@ class UserServiceImplTest {
     private UserServiceImpl userService;
 
     @Test
-    @DisplayName("Verify that registration works fine for valid input params")
+    @DisplayName("Verify that register() method works as expected for valid input params")
     void register_ValidRequest_RegistersUser() throws RegistrationException {
         UserRegistrationRequestDto requestDto =
                 createRegistrationRequestDto("test@gmail.com", "testPassword");
@@ -60,7 +67,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that registration works as expected for already registered email")
+    @DisplayName("Verify that register() method works as expected for already registered email")
     void register_AlreadyRegisteredEmail_ThrowsException() {
         UserRegistrationRequestDto requestDto =
                 createRegistrationRequestDto("test@gmail.com", "testPassword");
@@ -80,9 +87,9 @@ class UserServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that updateRole() works fine when updating owner to owner")
+    @DisplayName("Verify that updateRole() method works as expected when updating owner to owner")
     void updateRole_AlreadyOwner_ReturnsNothingUpdated() {
-        User user = createUser();
+        User user = createUser(1L);
 
         UserResponseDto expected = createResponseDto(user);
 
@@ -96,7 +103,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that updateRole() works fine when updating admin to owner")
+    @DisplayName("Verify that updateRole() method works as expected when updating admin to owner")
     void updateRole_UpdateAdminToOwner_ReturnsUpdatedUser() {
         Role userRole = new Role(1L);
         userRole.setName(Role.RoleName.ROLE_COMPANY_OWNER);
@@ -105,7 +112,7 @@ class UserServiceImplTest {
         adminRole.setName(Role.RoleName.ROLE_ADMIN);
 
         // now this user is an admin
-        User user = createUser();
+        User user = createUser(1L);
         HashSet<Role> roles = new HashSet<>();
         roles.add(userRole);
         roles.add(adminRole);
@@ -124,9 +131,9 @@ class UserServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that updateRole() works fine when updating user to admin")
+    @DisplayName("Verify that updateRole() method works as expected when updating user to admin")
     void updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser() {
-        User user = createUser();
+        User user = createUser(1L);
 
         // expecting that user will be admin after updating
         UserResponseDto expected = createResponseDto(user);
@@ -140,11 +147,82 @@ class UserServiceImplTest {
         assertEquals(expected, actual);
     }
 
-    private User createUser() {
+    @Test
+    @DisplayName("Verify that getById() method works as expected with a valid input")
+    public void getById_ValidInput_ReturnsUser() {
+        Long userId = 1L;
+
+        User user = createUser(1L);
+
+        UserResponseDto expected = createResponseDto(user);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userMapper.toResponseDto(user)).thenReturn(expected);
+
+        UserResponseDto actual = userService.getById(userId);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Verify that getById() method works as expected with non-valid input")
+    public void getById_NonValidInput_ThrowsException() {
+        Long nonValidId = 1251255236L;
+
+        when(userRepository.findById(nonValidId)).thenReturn(Optional.empty());
+
+        EntityNotFoundException exception = assertThrows(
+                EntityNotFoundException.class, () -> userService.getById(nonValidId)
+        );
+
+        String expectedMessage = "User with id " + nonValidId + " not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    @DisplayName("Verify that getAll() method works as expected")
+    public void getAll_ValidPageable_ReturnsAllUsers() {
+        // just mocker users
+        User firstUser = createUser(1L);
+        User secondUser = createUser(2L);
+        User thirdUser = createUser(3L);
+
+        List<User> users = new ArrayList<>();
+        users.add(firstUser);
+        users.add(secondUser);
+        users.add(thirdUser);
+
+        Pageable pageable = PageRequest.of(0, 5);
+
+        Page<User> expectedPage;
+        expectedPage = new PageImpl<>(users, pageable,users.size());
+
+        UserResponseDto firstResponseDto = createResponseDto(firstUser);
+        UserResponseDto secondResponseDto = createResponseDto(secondUser);
+        UserResponseDto thirdResponseDto = createResponseDto(thirdUser);
+
+        List<UserResponseDto> expectedList = new ArrayList<>();
+        expectedList.add(firstResponseDto);
+        expectedList.add(secondResponseDto);
+        expectedList.add(thirdResponseDto);
+
+        when(userRepository.findAll(pageable)).thenReturn(expectedPage);
+        when(userMapper.toResponseDto(firstUser)).thenReturn(firstResponseDto);
+        when(userMapper.toResponseDto(secondUser)).thenReturn(secondResponseDto);
+        when(userMapper.toResponseDto(thirdUser)).thenReturn(thirdResponseDto);
+
+        List<UserResponseDto> actualList = userService.getAll(pageable);
+
+        assertEquals(expectedList, actualList);
+    }
+
+    private User createUser(Long id) {
         Set<Role> roles = new HashSet<>();
         roles.add(new Role(1L));
         return new User()
-                .setId(1L)
+                .setId(id)
                 .setEmail("testemail@example.com")
                 .setPassword("testpassword")
                 .setLastName("Test")
