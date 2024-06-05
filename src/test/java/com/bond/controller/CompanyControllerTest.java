@@ -3,6 +3,7 @@ package com.bond.controller;
 import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -12,6 +13,7 @@ import com.bond.dto.company.CompanyResponseDto;
 import com.bond.dto.company.CompanyUpdateRequestDto;
 import com.bond.dto.company.CreateCompanyRequestDto;
 import com.bond.holder.LinksHolder;
+import com.bond.repository.CompanyRepository;
 import com.bond.security.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.UUID;
@@ -53,6 +55,8 @@ class CompanyControllerTest extends LinksHolder {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtUtil jwtUtil;
+    @Autowired
+    private CompanyRepository companyRepository;
 
     @BeforeAll
     static void beforeAll(@Autowired WebApplicationContext applicationContext) {
@@ -382,6 +386,85 @@ class CompanyControllerTest extends LinksHolder {
         expectedMessage = "Company with id " + id + " not found";
 
         assertThat(actualMessage).isEqualTo(expectedMessage);
+    }
+
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH,
+                    REMOVE_ALL_COMPANIES_FILE_PATH,
+                    INSERT_USER_TO_DATABASE_FILE_PATH,
+                    INSERT_ADMIN_RELATION_TO_USER_ROLES_FILE_PATH,
+                    INSERT_THREE_COMPANIES_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
+    )
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH,
+                    REMOVE_ALL_COMPANIES_FILE_PATH,
+            },
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
+    )
+    @DisplayName(
+            "Verify that update() endpoint will not perform update if passed name is already taken"
+    )
+    @Test
+    public void update_NameAlreadyTaken_Failure() throws Exception {
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setName("Company Name 2");
+
+        String id = "123e4567-e89b-12d3-a456-426614174000";
+
+        String content = objectMapper.writeValueAsString(requestDto);
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        USER_EMAIL, USER_PASSWORD
+                )
+        );
+
+        String jwt = jwtUtil.generateToken(authentication.getName());
+
+        MvcResult result = mockMvc.perform(put("/companies/" + id)
+                        .content(content)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .principal(authentication)
+                        .header(AUTHORIZATION, BEARER + SEPARATOR + jwt)
+                )
+                .andExpect(status().isBadRequest())
+                .andReturn();
+
+        String actualMessage = result.getResolvedException().getMessage();
+        String expectedMessage = "Company with name " + requestDto.getName() + " already exists";
+
+        assertThat(actualMessage).isEqualTo(expectedMessage);
+    }
+
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_COMPANIES_FILE_PATH,
+                    INSERT_COMPANY_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
+    )
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_COMPANIES_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
+    )
+    @Test
+    @DisplayName("Verify that delete() endpoint works as expected")
+    @WithMockUser(username = USER_EMAIL, roles = ADMIN)
+    public void delete_ValidRequest_Success() throws Exception {
+        String id = "123e4567-e89b-12d3-a456-426614174000";
+
+        mockMvc.perform(delete("/companies/" + id))
+                .andExpect(status().isNoContent());
+
+        assertThat(companyRepository.findById(UUID.fromString(id))).isEmpty();
     }
 
     private CompanyResponseDto createResponseDtoFromRequest(CreateCompanyRequestDto requestDto) {

@@ -61,8 +61,10 @@
     "JUnit.AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken.executor": "Run",
     "JUnit.CompanyControllerTest.create_ExistingNameIsPassed_Failure.executor": "Run",
     "JUnit.CompanyControllerTest.create_ValidInput_Success.executor": "Run",
+    "JUnit.CompanyControllerTest.delete_ValidRequest_Success.executor": "Run",
     "JUnit.CompanyControllerTest.getAll_ValidRequest_Success.executor": "Run",
     "JUnit.CompanyControllerTest.getById_ValidInput_Success.executor": "Run",
+    "JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure.executor": "Run",
     "JUnit.CompanyControllerTest.update_NonValidRequest_Failure.executor": "Run",
     "JUnit.CompanyControllerTest.update_ValidInput_Success.executor": "Run",
     "JUnit.CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException.executor": "Run",
@@ -169,8 +171,8 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompanyControllerTest.update_NonValidRequest_Failure">
-    <configuration name="CompanyControllerTest.create_ExistingNameIsPassed_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CompanyControllerTest.delete_ValidRequest_Success">
+    <configuration name="CompanyControllerTest.delete_ValidRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -180,7 +182,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="create_ExistingNameIsPassed_Failure" />
+      <option name="METHOD_NAME" value="delete_ValidRequest_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -202,7 +204,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyControllerTest.getById_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyControllerTest.update_NameAlreadyTaken_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -212,7 +214,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="getById_ValidInput_Success" />
+      <option name="METHOD_NAME" value="update_NameAlreadyTaken_Failure" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -293,9 +295,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CompanyControllerTest.create_ExistingNameIsPassed_Failure" />
+      <item itemvalue="JUnit.CompanyControllerTest.delete_ValidRequest_Success" />
       <item itemvalue="JUnit.CompanyControllerTest.getAll_ValidRequest_Success" />
-      <item itemvalue="JUnit.CompanyControllerTest.getById_ValidInput_Success" />
+      <item itemvalue="JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure" />
       <item itemvalue="JUnit.CompanyControllerTest.update_NonValidRequest_Failure" />
       <item itemvalue="JUnit.CompanyControllerTest.update_ValidInput_Success" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
@@ -303,11 +305,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CompanyControllerTest.delete_ValidRequest_Success" />
+        <item itemvalue="JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure" />
         <item itemvalue="JUnit.CompanyControllerTest.update_NonValidRequest_Failure" />
         <item itemvalue="JUnit.CompanyControllerTest.update_ValidInput_Success" />
         <item itemvalue="JUnit.CompanyControllerTest.getAll_ValidRequest_Success" />
-        <item itemvalue="JUnit.CompanyControllerTest.getById_ValidInput_Success" />
-        <item itemvalue="JUnit.CompanyControllerTest.create_ExistingNameIsPassed_Failure" />
       </list>
     </recent_temporary>
   </component>
@@ -338,7 +340,7 @@
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
       <workItem from="1717589460297" duration="5193000" />
-      <workItem from="1717596377596" duration="10068000" />
+      <workItem from="1717596377596" duration="11087000" />
     </task>
     <servers />
   </component>
