@@ -77,7 +77,7 @@ public class CompanyServiceImpl implements CompanyService {
             );
         }
         if (isValid(requestDto)) {
-            companyMapper.updateModel(company, requestDto);
+            company = companyMapper.updateModel(company, requestDto);
             return companyMapper.toResponseDto(companyRepository.save(company));
         }
         throw new IllegalArgumentException(

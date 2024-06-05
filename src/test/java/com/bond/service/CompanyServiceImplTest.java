@@ -10,15 +10,20 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import com.bond.dto.company.CompanyResponseDto;
+import com.bond.dto.company.CompanyUpdateRequestDto;
 import com.bond.dto.company.CreateCompanyRequestDto;
 import com.bond.mapper.CompanyMapper;
 import com.bond.model.Company;
+import com.bond.model.Role;
 import com.bond.model.User;
 import com.bond.repository.CompanyRepository;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
+import javax.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,8 +34,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-
-import javax.persistence.EntityNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 class CompanyServiceImplTest {
@@ -118,7 +121,7 @@ class CompanyServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that exception is thrown when company already exists")
+    @DisplayName("Verify that create() method works as expected when company already exists")
     public void create_PassedCompanyAlreadyExists_ThrowsException() {
         CreateCompanyRequestDto requestDto = new CreateCompanyRequestDto();
         requestDto.setAddress("Existing Test Address");
@@ -190,6 +193,133 @@ class CompanyServiceImplTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    @Test
+    @DisplayName("Verify that update() method works as expected with valid input")
+    public void update_ValidInput_ReturnsValidResponse() {
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setAddress("New Test Address");
+        requestDto.setName("New Test Name");
+
+        User user = new User()
+                .setId(1L);
+
+        UUID id = UUID.randomUUID();
+
+        Company company = createCompany(id);
+        company.setOwnerId(user.getId());
+
+        Company updatedCompany = createCompany(id);
+        updatedCompany.setOwnerId(user.getId());
+        updatedCompany.setAddress(requestDto.getAddress());
+        updatedCompany.setName(requestDto.getName());
+
+        CompanyResponseDto expectedResponseDto = createResponseDto(company);
+
+        when(companyRepository.findById(id)).thenReturn(Optional.of(company));
+        when(companyRepository.findByName(requestDto.getName())).thenReturn(Optional.empty());
+        when(companyMapper.updateModel(company, requestDto)).thenReturn(updatedCompany);
+        when(companyMapper.toResponseDto(updatedCompany)).thenReturn(expectedResponseDto);
+        when(companyRepository.save(updatedCompany)).thenReturn(updatedCompany);
+
+        CompanyResponseDto actualResponseDto = companyServiceImpl.update(id, requestDto, user);
+
+        assertEquals(expectedResponseDto, actualResponseDto);
+
+        verify(companyRepository, times(1)).findById(id);
+        verify(companyRepository, times(1)).findByName(requestDto.getName());
+        verify(companyRepository, times(1)).save(updatedCompany);
+    }
+
+    @Test
+    @DisplayName(
+            "Verify that update() method works as expected when name-to-update already exists"
+    )
+    public void update_NonValidNameToUpdate_ThrowsException() {
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setName("test");
+
+        UUID id = UUID.randomUUID();
+
+        Company companyToUpdate = createCompany(id);
+        companyToUpdate.setName("Test name");
+
+        Company existingCompany = createCompany(UUID.randomUUID());
+
+        User user = new User()
+                .setId(1L);
+
+        when(companyRepository.findById(id)).thenReturn(Optional.of(companyToUpdate));
+        when(companyRepository.findByName(requestDto.getName()))
+                .thenReturn(Optional.of(existingCompany));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> companyServiceImpl.update(id, requestDto, user)
+        );
+
+        String expectedMessage = "Company with name " + requestDto.getName() + " already exists";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    @DisplayName("Verify that update() method works as expected when passing non-valid id")
+    public void update_NonValidId_ThrowsException() {
+        UUID id = UUID.randomUUID();
+
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setName("Random name");
+
+        User user = new User()
+                .setId(1L);
+
+        when(companyRepository.findById(id)).thenReturn(Optional.empty());
+
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                () -> companyServiceImpl.update(id, requestDto, user)
+        );
+
+        String expectedMessage = "Company with id " + id + " not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    @DisplayName(
+            "Verify that update() method works as expected "
+                    + "when user is not allowed to update a company's info "
+                    + "(not a admin or a company's owner)"
+    )
+    public void update_NonValidUser_ThrowsException() {
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setName("Random name");
+
+        // user is not an admin or a company's owner
+        Set<Role> roles = new HashSet<>();
+        roles.add(new Role(1L));
+        User user = new User();
+        user.setId(1251661L)
+                .setRoles(roles);
+
+        UUID id = UUID.randomUUID();
+
+        Company company = createCompany(id);
+        company.setOwnerId(1L);
+
+        when(companyRepository.findById(id)).thenReturn(Optional.of(company));
+        when(companyRepository.findByName(requestDto.getName())).thenReturn(Optional.empty());
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> companyServiceImpl.update(id, requestDto, user)
+        );
+
+        String expectedMessage = "You do not have permission to update this company";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
     private Company createCompanyFromRequestDto(CreateCompanyRequestDto requestDto, Long userId) {
         return new Company()
                 .setId(UUID.randomUUID())
@@ -216,6 +346,8 @@ class CompanyServiceImplTest {
                 .setName("test")
                 .setCreatedAt(now())
                 .setAddress("test")
-                .setRegistrationNumber("test");
+                .setRegistrationNumber("test")
+                .setOwnerId(1L);
     }
 }
+

@@ -88,7 +88,7 @@ public class ReportServiceImpl implements ReportService {
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Report with id " + reportId + " not found")
                 );
-        reportMapper.updateModel(report, requestDto);
+        report = reportMapper.updateModel(report, requestDto);
         reportRepository.save(report);
         ReportDetails reportDetails = createReportDetails(report, ReportDetails.Type.UPDATE);
         reportDetailsRepository.save(reportDetails);

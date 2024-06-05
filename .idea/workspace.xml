@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +66,10 @@
     "JUnit.CompanyServiceImplTest.getAll_ValidPageable_ReturnsValidList.executor": "Run",
     "JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.getById_ValidId_ReturnsValidResponseDto.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse.executor": "Run",
     "JUnit.UserServiceImplTest.getAll_ValidPageable_ReturnsAllUsers.executor": "Run",
     "JUnit.UserServiceImplTest.getById_NonValidInput_ThrowsException.executor": "Run",
     "JUnit.UserServiceImplTest.getById_ValidInput_ReturnsUser.executor": "Run",
@@ -137,39 +142,7 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException">
-    <configuration name="ApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.ApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="create_PassedCompanyAlreadyExists_ThrowsException" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse">
     <configuration name="CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
@@ -186,7 +159,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyServiceImplTest.getById_ValidId_ReturnsValidResponseDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyServiceImplTest.update_NonValidId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -196,13 +169,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
       <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="getById_ValidId_ReturnsValidResponseDto" />
+      <option name="METHOD_NAME" value="update_NonValidId_ThrowsException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.updateRole_UpdateAdminToAdmin_ReturnsNothingUpdated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -211,23 +184,41 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="updateRole_UpdateAdminToAdmin_ReturnsNothingUpdated" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
+      <option name="METHOD_NAME" value="update_NonValidNameToUpdate_ThrowsException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.bond in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyServiceImplTest.update_NonValidUser_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.*" />
+          <option name="PATTERN" value="com.bond.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="com.bond.service" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
+      <option name="METHOD_NAME" value="update_NonValidUser_ThrowsException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.service" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
+      <option name="METHOD_NAME" value="update_ValidInput_ReturnsValidResponse" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -275,21 +266,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException" />
+      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException" />
+      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException" />
+      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException" />
+      <item itemvalue="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" />
       <item itemvalue="JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException" />
-      <item itemvalue="JUnit.CompanyServiceImplTest.getById_ValidId_ReturnsValidResponseDto" />
-      <item itemvalue="JUnit.UserServiceImplTest.updateRole_UpdateAdminToAdmin_ReturnsNothingUpdated" />
-      <item itemvalue="JUnit.com.bond in smida_task" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" />
+        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException" />
+        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException" />
+        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException" />
         <item itemvalue="JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.getById_ValidId_ReturnsValidResponseDto" />
-        <item itemvalue="JUnit.UserServiceImplTest.updateRole_UpdateAdminToAdmin_ReturnsNothingUpdated" />
-        <item itemvalue="JUnit.com.bond in smida_task" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +308,8 @@
       <workItem from="1717512587968" duration="1737000" />
       <workItem from="1717530020045" duration="2549000" />
       <workItem from="1717569455552" duration="108000" />
-      <workItem from="1717569587249" duration="6807000" />
+      <workItem from="1717569587249" duration="7535000" />
+      <workItem from="1717584175191" duration="2038000" />
     </task>
     <servers />
   </component>
@@ -327,24 +319,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java</url>
-          <line>15</line>
-          <properties class="com.bond.mapper.CompanyMapper" method="toModel">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java</url>
-          <line>13</line>
-          <properties class="com.bond.mapper.CompanyMapper" method="toResponseDto">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java</url>
           <line>93</line>
@@ -359,6 +333,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java</url>
           <line>164</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java</url>
+          <line>223</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
