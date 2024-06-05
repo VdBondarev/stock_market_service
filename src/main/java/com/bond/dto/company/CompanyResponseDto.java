@@ -2,11 +2,11 @@ package com.bond.dto.company;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-@Getter
-@Setter
+@Data
+@Accessors(chain = true)
 public class CompanyResponseDto {
     private UUID id;
     private String name;

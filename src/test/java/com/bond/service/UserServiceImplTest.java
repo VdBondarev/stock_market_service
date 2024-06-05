@@ -2,6 +2,8 @@ package com.bond.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.bond.dto.user.UserRegistrationRequestDto;
@@ -100,6 +102,9 @@ class UserServiceImplTest {
                 userService.updateRole(user.getId(), COMPANY_OWNER);
 
         assertEquals(expected, actual);
+
+        // verifying that update has not been performed
+        verify(userRepository, times(0)).save(user);
     }
 
     @Test
@@ -128,10 +133,13 @@ class UserServiceImplTest {
                 userService.updateRole(user.getId(), COMPANY_OWNER);
 
         assertEquals(expected, actual);
+
+        // verifying that update has been performed
+        verify(userRepository, times(1)).save(user);
     }
 
     @Test
-    @DisplayName("Verify that updateRole() method works as expected when updating user to admin")
+    @DisplayName("Verify that updateRole() method works as expected when updating owner to admin")
     void updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser() {
         User user = createUser(1L);
 
@@ -139,12 +147,36 @@ class UserServiceImplTest {
         UserResponseDto expected = createResponseDto(user);
 
         when(userRepository.findByIdWithRoles(user.getId())).thenReturn(Optional.of(user));
+        when(userRepository.save(user)).thenReturn(user);
         when(userMapper.toResponseDto(user)).thenReturn(expected);
 
         UserResponseDto actual =
                 userService.updateRole(user.getId(), ADMIN);
 
         assertEquals(expected, actual);
+
+        // verifying that update has been performed
+        verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    @DisplayName("Verify that updateRole() method works as expected when updating admin to admin")
+    public void updateRole_UpdateAdminToAdmin_ReturnsNothingUpdated() {
+        User user = createUser(1L);
+        // now this user is admin
+        user.getRoles().add(new Role(2L));
+
+        UserResponseDto expected = createResponseDto(user);
+
+        when(userRepository.findByIdWithRoles(user.getId())).thenReturn(Optional.of(user));
+        when(userMapper.toResponseDto(user)).thenReturn(expected);
+
+        UserResponseDto actual = userService.updateRole(user.getId(), ADMIN);
+
+        assertEquals(expected, actual);
+
+        // verifying that update has not been performed
+        verify(userRepository, times(0)).save(user);
     }
 
     @Test
