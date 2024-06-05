@@ -5,15 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/TestDemo1124Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/ReportControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/database/remove-all-reports.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/CreateReportRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/CreateReportRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/config/CustomMongoDbContainer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/controller/CompanyControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/CompanyControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +175,7 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportControllerTest">
+  <component name="RunManager" selected="JUnit.All in smida_task">
     <configuration name="All in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <option name="PACKAGE_NAME" value="" />
@@ -308,11 +299,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in smida_task" />
         <item itemvalue="JUnit.ReportControllerTest" />
         <item itemvalue="JUnit.ReportControllerTest.create_ValidRequest_Success" />
         <item itemvalue="JUnit.CompanyControllerTest" />
         <item itemvalue="JUnit.CompanyControllerTest.create_ValidInput_Success" />
-        <item itemvalue="JUnit.All in smida_task" />
       </list>
     </recent_temporary>
   </component>
