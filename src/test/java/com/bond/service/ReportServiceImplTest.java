@@ -4,10 +4,13 @@ import static java.time.LocalDateTime.now;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.bond.dto.report.CreateReportRequestDto;
 import com.bond.dto.report.ReportResponseDto;
+import com.bond.dto.report.UpdateReportRequestDto;
 import com.bond.mapper.ReportDetailsMapper;
 import com.bond.mapper.ReportMapper;
 import com.bond.model.Company;
@@ -207,6 +210,58 @@ class ReportServiceImplTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    @Test
+    @DisplayName("Verify that update() method works as expected with valid input params")
+    public void update_ValidInputParams_ReturnsValidDto() {
+        UpdateReportRequestDto requestDto = new UpdateReportRequestDto();
+        requestDto.setNetProfit(BigDecimal.ONE);
+        requestDto.setTotalRevenue(BigDecimal.ONE);
+
+        UUID reportId = UUID.randomUUID();
+
+        Report report = createReport(reportId);
+
+        Report updatedReport = createReport(report.getId());
+        updatedReport.setNetProfit(requestDto.getNetProfit());
+        updatedReport.setTotalRevenue(requestDto.getTotalRevenue());
+
+        ReportResponseDto expectedDto = createResponseDtoFromModel(report);
+
+        when(reportRepository.findById(reportId)).thenReturn(Optional.of(report));
+        when(reportMapper.updateModel(report, requestDto)).thenReturn(updatedReport);
+        when(reportRepository.save(updatedReport)).thenReturn(updatedReport);
+        when(reportDetailsRepository.save(any())).thenReturn(any());
+        when(reportMapper.toResponseDto(updatedReport)).thenReturn(expectedDto);
+
+        ReportResponseDto actualDto = reportService.update(reportId, requestDto);
+
+        assertEquals(expectedDto, actualDto);
+
+        verify(reportRepository, times(0)).save(report);
+        verify(reportRepository, times(1)).save(updatedReport);
+        verify(reportDetailsRepository, times(1)).save(any());
+    }
+
+    @Test
+    @DisplayName(
+            "Verify that update() method throws an exception when passing non-valid report id"
+    )
+    public void update_NonExistingReportId_ThrowsException() {
+        UUID id = UUID.randomUUID();
+
+        UpdateReportRequestDto requestDto = new UpdateReportRequestDto();
+
+        when(reportRepository.findById(id)).thenReturn(Optional.empty());
+
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                () -> reportService.update(id, requestDto));
+
+        String expectedMessage = "Report with id " + id + " not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
     private Report createReportFromRequestDto(CreateReportRequestDto requestDto) {
         return new Report()
                 .setCompanyId(requestDto.getCompanyId())
@@ -242,3 +297,56 @@ class ReportServiceImplTest {
                 .setNetProfit(BigDecimal.TEN);
     }
 }
+/**
+ *
+ *
+ *
+ *
+ *
+ *     @Override
+ *     public List<ReportResponseDto> getAllReportsForCompany(UUID companyId, Pageable pageable) {
+ *         return reportRepository.findAllByCompanyId(companyId)
+ *                 .stream()
+ *                 .map(reportMapper::toResponseDto)
+ *                 .collect(Collectors.toList());
+ *     }
+ *
+ *     @Override
+ *     public ReportDetailsResponseDto getReportDetails(UUID reportId) {
+ *         ReportDetails reportDetails = reportDetailsRepository.findByReportId(reportId)
+ *                 .orElseThrow(() -> new EntityNotFoundException(
+ *                         "Report details for a report with id " + reportId + " not found")
+ *                 );
+ *         return reportDetailsMapper.toResponseDto(reportDetails);
+ *     }
+ *
+ *     private boolean allowedToInteract(Company company, User user) {
+ *         return company.getOwnerId().equals(user.getId()) || user.getRoles().size() != TWO;
+ *     }
+ *
+ *     private ReportDetails createReportDetails(Report report, ReportDetails.Type type) {
+ *         FinancialData financialData = new FinancialData()
+ *                 .setNetProfit(report.getNetProfit())
+ *                 .setTotalRevenue(report.getTotalRevenue());
+ *         if (report.getTotalRevenue().equals(BigDecimal.ZERO)) {
+ *             financialData.setNetProfitMargin(BigDecimal.ZERO);
+ *         } else {
+ *             financialData.setNetProfitMargin(report.getNetProfit()
+ *                     .divide(
+ *                             report.getTotalRevenue(), RoundingMode.HALF_UP)
+ *             );
+ *         }
+ *         return new ReportDetails()
+ *                 .setFinancialData(financialData)
+ *                 .setReportId(report.getId())
+ *                 .setComments(
+ *                 "Report for company with id "
+ *                         + report.getCompanyId()
+ *                         + " created "
+ *                         + report.getReportDate()
+ *         )
+ *                 .setType(type);
+ *     }
+ * }
+ *
+ */
