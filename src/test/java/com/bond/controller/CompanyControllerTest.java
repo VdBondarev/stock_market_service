@@ -5,9 +5,11 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.bond.dto.company.CompanyResponseDto;
+import com.bond.dto.company.CompanyUpdateRequestDto;
 import com.bond.dto.company.CreateCompanyRequestDto;
 import com.bond.holder.LinksHolder;
 import com.bond.security.JwtUtil;
@@ -34,8 +36,10 @@ import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CompanyControllerTest extends LinksHolder {
+    public static final String AUTHORIZATION = "AUTHORIZATION";
     protected static MockMvc mockMvc;
     private static final String BEARER = "Bearer";
+    private static final String ADMIN = "ADMIN";
     private static final String COMPANY_OWNER = "COMPANY_OWNER";
     private static final String USER_PASSWORD = "1234567890";
     private static final String USER_EMAIL = "user@example.com";
@@ -239,6 +243,145 @@ class CompanyControllerTest extends LinksHolder {
 
         int expectedLength = 3;
         assertThat(returnedValue.length).isEqualTo(expectedLength);
+    }
+
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_COMPANIES_FILE_PATH,
+                    INSERT_COMPANY_FILE_PATH,
+                    INSERT_USER_TO_DATABASE_FILE_PATH,
+                    INSERT_ADMIN_RELATION_TO_USER_ROLES_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
+    )
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_COMPANIES_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH,
+                    REMOVE_ALL_USERS_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
+    )
+    @Test
+    @WithMockUser(username = USER_EMAIL, roles = ADMIN)
+    public void update_ValidInput_Success() throws Exception {
+        String id = "123e4567-e89b-12d3-a456-426614174000";
+
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setName("New Company Name");
+        requestDto.setAddress("New Address");
+
+        String content = objectMapper.writeValueAsString(requestDto);
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        USER_EMAIL, USER_PASSWORD
+                )
+        );
+
+        String jwt = jwtUtil.generateToken(authentication.getName());
+
+        MvcResult result = mockMvc.perform(put("/companies/" + id)
+                        .content(content)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .principal(authentication)
+                        .header(AUTHORIZATION, BEARER + SEPARATOR + jwt)
+                )
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String registrationNumber = "123456789";
+
+        CompanyResponseDto expected = new CompanyResponseDto()
+                .setName(requestDto.getName())
+                .setId(UUID.fromString(id))
+                .setAddress(requestDto.getAddress())
+                .setRegistrationNumber(registrationNumber);
+
+        CompanyResponseDto actual = objectMapper.readValue(
+                result.getResponse().getContentAsString(), CompanyResponseDto.class
+        );
+
+        assertThat(actual)
+                .usingRecursiveComparison()
+                .ignoringFields(CREATED_AT_FIELD, OWNER_ID_FIELD)
+                .isEqualTo(expected);
+    }
+
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH,
+                    INSERT_USER_TO_DATABASE_FILE_PATH,
+                    INSERT_ADMIN_RELATION_TO_USER_ROLES_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
+    )
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
+    )
+    @DisplayName(
+            "Verify that update() endpoint works as expected with non-valid request "
+                    + "Name-to-update and address-to-update are blank. Id is not valid"
+    )
+    @Test
+    public void update_NonValidRequest_Failure() throws Exception {
+        String id = "123e4567-e89b-12d3-a456-426614174000";
+
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setName("");
+        requestDto.setAddress("");
+
+        String content = objectMapper.writeValueAsString(requestDto);
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        USER_EMAIL, USER_PASSWORD
+                )
+        );
+
+        String jwt = jwtUtil.generateToken(authentication.getName());
+
+        MvcResult result = mockMvc.perform(put("/companies/" + id)
+                        .content(content)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .principal(authentication)
+                        .header(AUTHORIZATION, BEARER + SEPARATOR + jwt)
+                )
+                .andExpect(status().isBadRequest())
+                .andReturn();
+
+        String actualMessage = result.getResolvedException().getMessage();
+        String expectedMessage = "Update request is not valid. "
+                + "Update must be performed by at least one non-empty field.";
+
+        assertThat(actualMessage).isEqualTo(expectedMessage);
+
+        requestDto.setName("Valid");
+        requestDto.setAddress("Valid");
+
+        content = objectMapper.writeValueAsString(requestDto);
+
+        // non-valid UUID
+        id = "123e4567-e89b-12d3-a456-426614174001";
+
+        result = mockMvc.perform(put("/companies/" + id)
+                        .content(content)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .principal(authentication)
+                        .header(AUTHORIZATION, BEARER + SEPARATOR + jwt)
+                )
+                .andExpect(status().isBadRequest())
+                .andReturn();
+
+        actualMessage = result.getResolvedException().getMessage();
+        expectedMessage = "Company with id " + id + " not found";
+
+        assertThat(actualMessage).isEqualTo(expectedMessage);
     }
 
     private CompanyResponseDto createResponseDtoFromRequest(CreateCompanyRequestDto requestDto) {

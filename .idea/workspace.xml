@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-three-companies.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/controller/CompanyControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/CompanyControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +63,8 @@
     "JUnit.CompanyControllerTest.create_ValidInput_Success.executor": "Run",
     "JUnit.CompanyControllerTest.getAll_ValidRequest_Success.executor": "Run",
     "JUnit.CompanyControllerTest.getById_ValidInput_Success.executor": "Run",
+    "JUnit.CompanyControllerTest.update_NonValidRequest_Failure.executor": "Run",
+    "JUnit.CompanyControllerTest.update_ValidInput_Success.executor": "Run",
     "JUnit.CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.create_ValidInput_ReturnsValidCompany.executor": "Run",
     "JUnit.CompanyServiceImplTest.getAll_ValidPageable_ReturnsValidList.executor": "Run",
@@ -169,7 +169,7 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompanyControllerTest.getAll_ValidRequest_Success">
+  <component name="RunManager" selected="JUnit.CompanyControllerTest.update_NonValidRequest_Failure">
     <configuration name="CompanyControllerTest.create_ExistingNameIsPassed_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
@@ -181,22 +181,6 @@
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
       <option name="METHOD_NAME" value="create_ExistingNameIsPassed_Failure" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CompanyControllerTest.create_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="create_ValidInput_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -234,10 +218,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="bond in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyControllerTest.update_NonValidRequest_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/bond" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
+      <option name="METHOD_NAME" value="update_NonValidRequest_Failure" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CompanyControllerTest.update_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
+      <option name="METHOD_NAME" value="update_ValidInput_Success" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -286,20 +294,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.CompanyControllerTest.create_ExistingNameIsPassed_Failure" />
-      <item itemvalue="JUnit.CompanyControllerTest.create_ValidInput_Success" />
       <item itemvalue="JUnit.CompanyControllerTest.getAll_ValidRequest_Success" />
       <item itemvalue="JUnit.CompanyControllerTest.getById_ValidInput_Success" />
-      <item itemvalue="JUnit.bond in smida_task" />
+      <item itemvalue="JUnit.CompanyControllerTest.update_NonValidRequest_Failure" />
+      <item itemvalue="JUnit.CompanyControllerTest.update_ValidInput_Success" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CompanyControllerTest.update_NonValidRequest_Failure" />
+        <item itemvalue="JUnit.CompanyControllerTest.update_ValidInput_Success" />
         <item itemvalue="JUnit.CompanyControllerTest.getAll_ValidRequest_Success" />
         <item itemvalue="JUnit.CompanyControllerTest.getById_ValidInput_Success" />
         <item itemvalue="JUnit.CompanyControllerTest.create_ExistingNameIsPassed_Failure" />
-        <item itemvalue="JUnit.bond in smida_task" />
-        <item itemvalue="JUnit.CompanyControllerTest.create_ValidInput_Success" />
       </list>
     </recent_temporary>
   </component>
@@ -330,7 +338,7 @@
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
       <workItem from="1717589460297" duration="5193000" />
-      <workItem from="1717596377596" duration="8808000" />
+      <workItem from="1717596377596" duration="10068000" />
     </task>
     <servers />
   </component>
