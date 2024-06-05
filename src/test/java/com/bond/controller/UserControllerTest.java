@@ -20,7 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
@@ -32,12 +31,11 @@ import org.springframework.web.context.WebApplicationContext;
 class UserControllerTest extends LinksHolder {
     protected static MockMvc mockMvc;
     private static final String ADMIN_EMAIL = "admin@example.com";
+    private static final String ADMIN = "ADMIN";
     private static final int ONE = 1;
     private static final int TWO = 2;
     @Autowired
     private ObjectMapper objectMapper;
-    @Autowired
-    private AuthenticationManager authenticationManager;
     @Autowired
     private UserRepository userRepository;
 
@@ -64,7 +62,7 @@ class UserControllerTest extends LinksHolder {
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     @Test
-    @WithMockUser(username = ADMIN_EMAIL, roles = "ADMIN")
+    @WithMockUser(username = ADMIN_EMAIL, roles = ADMIN)
     @DisplayName("Verify that getAll() endpoint works as expected")
     public void getAll_ValidInput_Success() throws Exception {
         Pageable pageable = PageRequest.of(0, 5);
@@ -98,7 +96,7 @@ class UserControllerTest extends LinksHolder {
             },
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
-    @WithMockUser(username = ADMIN_EMAIL, roles = "ADMIN")
+    @WithMockUser(username = ADMIN_EMAIL, roles = ADMIN)
     @Test
     @DisplayName("Verify that getById() endpoint works as expected")
     public void getById_ValidInput_Success() throws Exception {
@@ -138,17 +136,15 @@ class UserControllerTest extends LinksHolder {
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     @DisplayName("Verify that updateRole() endpoint works as expected "
-            + "when updating company owner to admin")
+            + "when updating a company owner to an admin")
     @Test
-    @WithMockUser(username = ADMIN_EMAIL, roles = "ADMIN")
+    @WithMockUser(username = ADMIN_EMAIL, roles = ADMIN)
     void updateRole_CompanyOwnerToAdmin_Success() throws Exception {
-        String roleName = "ADMIN";
-
         Long id = 1L;
 
         mockMvc.perform(
                         patch("/users/" + id + "/role")
-                                .param("role", roleName)
+                                .param("role", ADMIN)
                 )
                 .andExpect(status().isOk());
 
@@ -174,7 +170,7 @@ class UserControllerTest extends LinksHolder {
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     @Test
-    @WithMockUser(username = ADMIN_EMAIL, roles = "ADMIN")
+    @WithMockUser(username = ADMIN_EMAIL, roles = ADMIN)
     @DisplayName(
             "Verify that updateRole() endpoint works as expected "
                     + "when updating an admin to a company owner"
@@ -212,20 +208,19 @@ class UserControllerTest extends LinksHolder {
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     @Test
-    @WithMockUser(username = ADMIN_EMAIL, roles = "ADMIN")
+    @WithMockUser(username = ADMIN_EMAIL, roles = ADMIN)
     @DisplayName(
             "Verify that updateRole() endpoint works as expected "
                     + "when updating an admin to an admin"
     )
     public void updateRole_AdminToAdmin_NothingUpdated()
             throws Exception {
-        String roleName = "ADMIN";
 
         Long id = 1L;
 
         mockMvc.perform(
                         patch("/users/" + id + "/role")
-                                .param("role", roleName)
+                                .param("role", ADMIN)
                 )
                 .andExpect(status().isOk());
 
@@ -251,7 +246,7 @@ class UserControllerTest extends LinksHolder {
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     @Test
-    @WithMockUser(username = ADMIN_EMAIL, roles = "ADMIN")
+    @WithMockUser(username = ADMIN_EMAIL, roles = ADMIN)
     @DisplayName(
             "Verify that updateRole() endpoint works as expected "
                     + "when updating a company owner to a company owner"
@@ -287,7 +282,7 @@ class UserControllerTest extends LinksHolder {
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     @Test
-    @WithMockUser(username = ADMIN_EMAIL, roles = "ADMIN")
+    @WithMockUser(username = ADMIN_EMAIL, roles = ADMIN)
     @DisplayName("Verify that delete() endpoint works as expected")
     public void delete_ValidId_Success() throws Exception {
         Long id = 1L;

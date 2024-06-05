@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/UserControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-admin-to-user_roles.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-company_owner-to-user_roles.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-five-users-to-database.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/db/changelog/changes/06-insert-test-roles.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/CompanyControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/database/remove-all-companies.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/controller/AuthControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/AuthControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/company/CreateCompanyRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/company/CreateCompanyRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/UserControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/database/insert-admin-roles-to-user_roles-table.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/database/insert-user-to-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/database/insert-user-to-database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/db/changelog/db.test-changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/db/changelog/db.test-changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/database/delete-all-users_roles-from-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/database/remove-all-users_roles-from-database.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +65,7 @@
     "JUnit.AuthControllerTest.login_ValidInput_Success.executor": "Run",
     "JUnit.AuthenticationServiceTest.login_InvalidInput_ThrowsException.executor": "Run",
     "JUnit.AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken.executor": "Run",
+    "JUnit.CompanyControllerTest.create_ValidInput_Success.executor": "Run",
     "JUnit.CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.create_ValidInput_ReturnsValidCompany.executor": "Run",
     "JUnit.CompanyServiceImplTest.getAll_ValidPageable_ReturnsValidList.executor": "Run",
@@ -91,6 +88,7 @@
     "JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto.executor": "Run",
     "JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.UserControllerTest.delete_ValidId_Success.executor": "Run",
     "JUnit.UserControllerTest.getAll_ValidInput_Success.executor": "Run",
     "JUnit.UserControllerTest.getById_ValidInput_Success.executor": "Run",
     "JUnit.UserControllerTest.updateRole_AdminToAdmin_NothingUpdated.executor": "Run",
@@ -171,7 +169,31 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest.delete_ValidId_Success">
+  <component name="RunManager" selected="JUnit.bond in smida_task">
+    <configuration name="All in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CompanyControllerTest.create_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
+      <option name="METHOD_NAME" value="create_ValidInput_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserControllerTest.delete_ValidId_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
@@ -183,54 +205,6 @@
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
       <option name="METHOD_NAME" value="delete_ValidId_Success" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest.updateRole_AdminToAdmin_NothingUpdated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="updateRole_AdminToAdmin_NothingUpdated" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest.updateRole_AdminToCompanyOwner_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="updateRole_AdminToCompanyOwner_Success" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest.updateRole_CompanyOwnerToAdmin_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="updateRole_CompanyOwnerToAdmin_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -248,6 +222,14 @@
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
       <option name="METHOD_NAME" value="updateRole_CompanyOwnerToCompanyOwner_NothingUpdated" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="bond in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/bond" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -295,21 +277,21 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.All in smida_task" />
+      <item itemvalue="JUnit.CompanyControllerTest.create_ValidInput_Success" />
       <item itemvalue="JUnit.UserControllerTest.delete_ValidId_Success" />
-      <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToAdmin_NothingUpdated" />
-      <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToCompanyOwner_Success" />
-      <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToAdmin_Success" />
       <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToCompanyOwner_NothingUpdated" />
+      <item itemvalue="JUnit.bond in smida_task" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.bond in smida_task" />
+        <item itemvalue="JUnit.CompanyControllerTest.create_ValidInput_Success" />
+        <item itemvalue="JUnit.All in smida_task" />
         <item itemvalue="JUnit.UserControllerTest.delete_ValidId_Success" />
         <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToCompanyOwner_NothingUpdated" />
-        <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToAdmin_NothingUpdated" />
-        <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToCompanyOwner_Success" />
-        <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToAdmin_Success" />
       </list>
     </recent_temporary>
   </component>
@@ -340,7 +322,7 @@
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
       <workItem from="1717589460297" duration="5193000" />
-      <workItem from="1717596377596" duration="5475000" />
+      <workItem from="1717596377596" duration="7287000" />
     </task>
     <servers />
   </component>
@@ -372,14 +354,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/controller/UserControllerTest.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="19" />
+          <line>287</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/smida_task$All_in_smida_task.ic" NAME="All in smida_task Coverage Results" MODIFIED="1717596409217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/smida_task$All_in_smida_task.ic" NAME="All in smida_task Coverage Results" MODIFIED="1717602290346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/smida_task$java_in_smida_task.ic" NAME="java in smida_task Coverage Results" MODIFIED="1717598705975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/smida_task$com_bond_in_smida_task.ic" NAME="com.bond in smida_task Coverage Results" MODIFIED="1717599723806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.bond.*</FILTER>
