@@ -1,4 +1,4 @@
-package com.bond.service.impl;
+package com.bond.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -24,6 +24,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
+    private static final String COMPANY_OWNER = "COMPANY_OWNER";
+    private static final String ADMIN = "ADMIN";
     @Mock
     private PasswordEncoder passwordEncoder;
 
@@ -75,6 +77,79 @@ class UserServiceImplTest {
         String actual = exception.getMessage();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Verify that updateRole() works fine when updating owner to owner")
+    void updateRole_AlreadyOwner_ReturnsNothingUpdated() {
+        User user = createUser();
+
+        UserResponseDto expected = createResponseDto(user);
+
+        when(userRepository.findByIdWithRoles(user.getId())).thenReturn(Optional.of(user));
+        when(userMapper.toResponseDto(user)).thenReturn(expected);
+
+        UserResponseDto actual =
+                userService.updateRole(user.getId(), COMPANY_OWNER);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Verify that updateRole() works fine when updating admin to owner")
+    void updateRole_UpdateAdminToOwner_ReturnsUpdatedUser() {
+        Role userRole = new Role(1L);
+        userRole.setName(Role.RoleName.ROLE_COMPANY_OWNER);
+
+        Role adminRole = new Role(2L);
+        adminRole.setName(Role.RoleName.ROLE_ADMIN);
+
+        // now this user is an admin
+        User user = createUser();
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(userRole);
+        roles.add(adminRole);
+        user.setRoles(roles);
+
+        UserResponseDto expected = createResponseDto(user);
+
+        when(userRepository.findByIdWithRoles(user.getId())).thenReturn(Optional.of(user));
+        when(userRepository.save(user)).thenReturn(user);
+        when(userMapper.toResponseDto(user)).thenReturn(expected);
+
+        UserResponseDto actual =
+                userService.updateRole(user.getId(), COMPANY_OWNER);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Verify that updateRole() works fine when updating user to admin")
+    void updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser() {
+        User user = createUser();
+
+        // expecting that user will be admin after updating
+        UserResponseDto expected = createResponseDto(user);
+
+        when(userRepository.findByIdWithRoles(user.getId())).thenReturn(Optional.of(user));
+        when(userMapper.toResponseDto(user)).thenReturn(expected);
+
+        UserResponseDto actual =
+                userService.updateRole(user.getId(), ADMIN);
+
+        assertEquals(expected, actual);
+    }
+
+    private User createUser() {
+        Set<Role> roles = new HashSet<>();
+        roles.add(new Role(1L));
+        return new User()
+                .setId(1L)
+                .setEmail("testemail@example.com")
+                .setPassword("testpassword")
+                .setLastName("Test")
+                .setFirstName("Test")
+                .setRoles(roles);
     }
 
     private User createUser(UserRegistrationRequestDto requestDto) {

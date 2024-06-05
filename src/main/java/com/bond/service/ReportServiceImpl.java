@@ -1,4 +1,4 @@
-package com.bond.service.impl;
+package com.bond.service;
 
 import static java.time.LocalDateTime.now;
 
@@ -16,7 +16,6 @@ import com.bond.model.data.FinancialData;
 import com.bond.repository.CompanyRepository;
 import com.bond.repository.ReportDetailsRepository;
 import com.bond.repository.ReportRepository;
-import com.bond.service.ReportService;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;

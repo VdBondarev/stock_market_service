@@ -1,4 +1,4 @@
-package com.bond.service.impl;
+package com.bond.service;
 
 import com.bond.dto.user.UserRegistrationRequestDto;
 import com.bond.dto.user.UserResponseDto;
@@ -7,7 +7,6 @@ import com.bond.mapper.UserMapper;
 import com.bond.model.Role;
 import com.bond.model.User;
 import com.bond.repository.UserRepository;
-import com.bond.service.UserService;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -67,12 +66,7 @@ public class UserServiceImpl implements UserService {
                         "User with id " + id + " not found")
                 );
         Role.RoleName role = Role.RoleName.fromString(roleName);
-        if (userIs(user, Role.RoleName.ROLE_COMPANY_OWNER)
-                && role.equals(Role.RoleName.ROLE_COMPANY_OWNER)) {
-            return userMapper.toResponseDto(user);
-        }
-        if (userIs(user, Role.RoleName.ROLE_ADMIN)
-                && role.equals(Role.RoleName.ROLE_ADMIN)) {
+        if (userAlreadyIs(user, role)) {
             return userMapper.toResponseDto(user);
         }
         if (userIs(user, Role.RoleName.ROLE_COMPANY_OWNER)
@@ -92,5 +86,10 @@ public class UserServiceImpl implements UserService {
             return user.getRoles().size() == ONE;
         }
         return user.getRoles().size() == TWO;
+    }
+
+    private boolean userAlreadyIs(User user, Role.RoleName roleName) {
+        return user.getRoles().size() == ONE && roleName.equals(Role.RoleName.ROLE_COMPANY_OWNER)
+                || user.getRoles().size() == TWO && roleName.equals(Role.RoleName.ROLE_ADMIN);
     }
 }

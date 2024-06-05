@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/impl/UserServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserRegistrationRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserRegistrationRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/user/UserResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/impl/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +59,10 @@
     "JUnit.ApplicationTests.contextLoads.executor": "Run",
     "JUnit.AuthenticationServiceTest.login_InvalidInput_ThrowsException.executor": "Run",
     "JUnit.AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken.executor": "Run",
+    "JUnit.UserServiceImplTest.register_AlreadyRegisteredEmail_ThrowsException.executor": "Run",
     "JUnit.UserServiceImplTest.register_ValidRequest_RegistersUser.executor": "Run",
+    "JUnit.UserServiceImplTest.updateRole_AlreadyOwner_ReturnsNothingUpdated.executor": "Run",
+    "JUnit.UserServiceImplTest.updateUserRole_AlreadyCustomer_ReturnsNothingUpdated.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok integration problem",
     "Notification.DoNotAsk-Lombok plugin": "true",
@@ -114,7 +118,7 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceImplTest.register_AlreadyRegisteredEmail_ThrowsException">
+  <component name="RunManager" selected="JUnit.UserServiceImplTest.updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser">
     <configuration name="ApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
@@ -126,54 +130,6 @@
       <option name="PACKAGE_NAME" value="com.bond" />
       <option name="MAIN_CLASS_NAME" value="com.bond.ApplicationTests" />
       <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.ApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthenticationServiceTest.login_InvalidInput_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.security.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.security" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.security.AuthenticationServiceTest" />
-      <option name="METHOD_NAME" value="login_InvalidInput_ThrowsException" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.security.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.security" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.security.AuthenticationServiceTest" />
-      <option name="METHOD_NAME" value="login_ValidRequest_ReturnsValidToken" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -195,17 +151,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.register_ValidRequest_RegistersUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceImplTest.updateRole_AlreadyOwner_ReturnsNothingUpdated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.service.impl.*" />
+          <option name="PATTERN" value="com.bond.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.impl.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="register_ValidRequest_RegistersUser" />
+      <option name="PACKAGE_NAME" value="com.bond.service" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="updateRole_AlreadyOwner_ReturnsNothingUpdated" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.service" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.updateUserRole_AlreadyCustomer_ReturnsNothingUpdated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.service" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="updateUserRole_AlreadyCustomer_ReturnsNothingUpdated" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.updateUserRole_UpdateManagerToCustomer_ReturnsUpdatedUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.service" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="updateUserRole_UpdateManagerToCustomer_ReturnsUpdatedUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -254,21 +258,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AuthenticationServiceTest.login_InvalidInput_ThrowsException" />
-      <item itemvalue="JUnit.AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken" />
       <item itemvalue="JUnit.UserServiceImplTest.register_AlreadyRegisteredEmail_ThrowsException" />
-      <item itemvalue="JUnit.UserServiceImplTest.register_ValidRequest_RegistersUser" />
-      <item itemvalue="JUnit.ApplicationTests.contextLoads" />
+      <item itemvalue="JUnit.UserServiceImplTest.updateRole_AlreadyOwner_ReturnsNothingUpdated" />
+      <item itemvalue="JUnit.UserServiceImplTest.updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser" />
+      <item itemvalue="JUnit.UserServiceImplTest.updateUserRole_AlreadyCustomer_ReturnsNothingUpdated" />
+      <item itemvalue="JUnit.UserServiceImplTest.updateUserRole_UpdateManagerToCustomer_ReturnsUpdatedUser" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceImplTest.updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser" />
+        <item itemvalue="JUnit.UserServiceImplTest.updateUserRole_UpdateManagerToCustomer_ReturnsUpdatedUser" />
+        <item itemvalue="JUnit.UserServiceImplTest.updateRole_AlreadyOwner_ReturnsNothingUpdated" />
+        <item itemvalue="JUnit.UserServiceImplTest.updateUserRole_AlreadyCustomer_ReturnsNothingUpdated" />
         <item itemvalue="JUnit.UserServiceImplTest.register_AlreadyRegisteredEmail_ThrowsException" />
-        <item itemvalue="JUnit.UserServiceImplTest.register_ValidRequest_RegistersUser" />
-        <item itemvalue="JUnit.AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken" />
-        <item itemvalue="JUnit.AuthenticationServiceTest.login_InvalidInput_ThrowsException" />
-        <item itemvalue="JUnit.ApplicationTests.contextLoads" />
       </list>
     </recent_temporary>
   </component>
@@ -296,7 +300,7 @@
       <workItem from="1717512587968" duration="1737000" />
       <workItem from="1717530020045" duration="2549000" />
       <workItem from="1717569455552" duration="108000" />
-      <workItem from="1717569587249" duration="882000" />
+      <workItem from="1717569587249" duration="1981000" />
     </task>
     <servers />
   </component>
@@ -323,6 +327,11 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

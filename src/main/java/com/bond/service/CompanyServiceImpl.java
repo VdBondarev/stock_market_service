@@ -1,4 +1,4 @@
-package com.bond.service.impl;
+package com.bond.service;
 
 import static java.time.LocalDateTime.now;
 
@@ -9,7 +9,6 @@ import com.bond.mapper.CompanyMapper;
 import com.bond.model.Company;
 import com.bond.model.User;
 import com.bond.repository.CompanyRepository;
-import com.bond.service.CompanyService;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
