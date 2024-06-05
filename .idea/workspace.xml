@@ -64,6 +64,7 @@
     "JUnit.CompanyControllerTest.delete_ValidRequest_Success.executor": "Run",
     "JUnit.CompanyControllerTest.getAll_ValidRequest_Success.executor": "Run",
     "JUnit.CompanyControllerTest.getById_ValidInput_Success.executor": "Run",
+    "JUnit.CompanyControllerTest.getMine_ValidRequest_Success.executor": "Run",
     "JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure.executor": "Run",
     "JUnit.CompanyControllerTest.update_NonValidRequest_Failure.executor": "Run",
     "JUnit.CompanyControllerTest.update_ValidInput_Success.executor": "Run",
@@ -109,6 +110,7 @@
     "JUnit.bond in smida_task.executor": "Run",
     "JUnit.com.bond in smida_task.executor": "Coverage",
     "JUnit.java in smida_task.executor": "Coverage",
+    "JUnit.service in smida_task.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok integration problem",
     "Notification.DoNotAsk-Lombok plugin": "true",
@@ -171,7 +173,7 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompanyControllerTest.delete_ValidRequest_Success">
+  <component name="RunManager" selected="JUnit.CompanyControllerTest.getMine_ValidRequest_Success">
     <configuration name="CompanyControllerTest.delete_ValidRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
@@ -188,7 +190,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyControllerTest.getAll_ValidRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyControllerTest.getMine_ValidRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -198,7 +200,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="getAll_ValidRequest_Success" />
+      <option name="METHOD_NAME" value="getMine_ValidRequest_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -236,18 +238,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyControllerTest.update_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="service in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="update_ValidInput_Success" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/bond/service" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -296,20 +290,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.CompanyControllerTest.delete_ValidRequest_Success" />
-      <item itemvalue="JUnit.CompanyControllerTest.getAll_ValidRequest_Success" />
+      <item itemvalue="JUnit.CompanyControllerTest.getMine_ValidRequest_Success" />
       <item itemvalue="JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure" />
       <item itemvalue="JUnit.CompanyControllerTest.update_NonValidRequest_Failure" />
-      <item itemvalue="JUnit.CompanyControllerTest.update_ValidInput_Success" />
+      <item itemvalue="JUnit.service in smida_task" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CompanyControllerTest.getMine_ValidRequest_Success" />
+        <item itemvalue="JUnit.service in smida_task" />
         <item itemvalue="JUnit.CompanyControllerTest.delete_ValidRequest_Success" />
         <item itemvalue="JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure" />
         <item itemvalue="JUnit.CompanyControllerTest.update_NonValidRequest_Failure" />
-        <item itemvalue="JUnit.CompanyControllerTest.update_ValidInput_Success" />
-        <item itemvalue="JUnit.CompanyControllerTest.getAll_ValidRequest_Success" />
       </list>
     </recent_temporary>
   </component>
@@ -340,7 +334,7 @@
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
       <workItem from="1717589460297" duration="5193000" />
-      <workItem from="1717596377596" duration="11087000" />
+      <workItem from="1717596377596" duration="11563000" />
     </task>
     <servers />
   </component>

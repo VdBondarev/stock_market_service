@@ -467,6 +467,58 @@ class CompanyControllerTest extends LinksHolder {
         assertThat(companyRepository.findById(UUID.fromString(id))).isEmpty();
     }
 
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH,
+                    REMOVE_ALL_COMPANIES_FILE_PATH,
+                    INSERT_USER_TO_DATABASE_FILE_PATH,
+                    INSERT_THREE_COMPANIES_FILE_PATH,
+                    INSERT_ADMIN_RELATION_TO_USER_ROLES_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
+    )
+    @Sql(
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH,
+                    REMOVE_ALL_COMPANIES_FILE_PATH
+            },
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
+    )
+    @DisplayName("Verify that getMine() endpoint works as expected")
+    @Test
+    public void getMine_ValidRequest_Success() throws Exception {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        USER_EMAIL, USER_PASSWORD
+                )
+        );
+
+        String jwt;
+        jwt = jwtUtil.generateToken(authentication.getName());
+
+        Pageable pageable = PageRequest.of(0, 5);
+
+        String content = objectMapper.writeValueAsString(pageable);
+
+        MvcResult result = mockMvc.perform(get("/companies/mine/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+                        .header(AUTHORIZATION, BEARER + SEPARATOR + jwt)
+                        .principal(authentication)
+                )
+                .andExpect(status().isOk())
+                .andReturn();
+
+        CompanyResponseDto[] returnedResult = objectMapper.readValue(
+                result.getResponse().getContentAsString(), CompanyResponseDto[].class
+        );
+
+        int expectedLength = 3;
+        assertThat(returnedResult).hasSize(expectedLength);
+    }
+
     private CompanyResponseDto createResponseDtoFromRequest(CreateCompanyRequestDto requestDto) {
         return new CompanyResponseDto()
                 .setCreatedAt(now())
