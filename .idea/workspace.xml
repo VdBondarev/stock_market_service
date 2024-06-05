@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/CompanyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/mapper/ReportMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,8 +63,10 @@
     "JUnit.CompanyServiceImplTest.getAll_ValidPageable_ReturnsValidList.executor": "Run",
     "JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.getById_ValidId_ReturnsValidResponseDto.executor": "Run",
+    "JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList.executor": "Run",
     "JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse.executor": "Run",
     "JUnit.UserServiceImplTest.getAll_ValidPageable_ReturnsAllUsers.executor": "Run",
@@ -142,8 +141,8 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse">
-    <configuration name="CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList">
+    <configuration name="CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -153,7 +152,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
       <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="getById_NonValidPassedId_ThrowsException" />
+      <option name="METHOD_NAME" value="getMine_ValidRequest_ReturnsValidList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -175,7 +174,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -185,7 +184,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
       <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="update_NonValidNameToUpdate_ThrowsException" />
+      <option name="METHOD_NAME" value="update_NonValidRequestDto_ThrowsException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -266,21 +265,21 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList" />
+      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException" />
       <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException" />
-      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException" />
       <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException" />
       <item itemvalue="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" />
-      <item itemvalue="JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList" />
+        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException" />
         <item itemvalue="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" />
         <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException" />
         <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +308,8 @@
       <workItem from="1717530020045" duration="2549000" />
       <workItem from="1717569455552" duration="108000" />
       <workItem from="1717569587249" duration="7535000" />
-      <workItem from="1717584175191" duration="2038000" />
+      <workItem from="1717584175191" duration="2175000" />
+      <workItem from="1717589460297" duration="761000" />
     </task>
     <servers />
   </component>

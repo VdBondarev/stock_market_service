@@ -320,6 +320,66 @@ class CompanyServiceImplTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    @Test
+    @DisplayName(
+            "Verify that update() method works as expected with non-valid request dto "
+                    + "(fields are empty)"
+    )
+    public void update_NonValidRequestDto_ThrowsException() {
+        CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
+        requestDto.setName("");
+        requestDto.setAddress("");
+
+        User user = new User();
+        user.setId(1L);
+
+        UUID id = UUID.randomUUID();
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> companyServiceImpl.update(id, requestDto, user));
+
+        String expectedMessage = "Update request is not valid. "
+                + "Update must be performed by at least one non-empty field.";
+        String actualMessage = exception.getMessage();
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    @DisplayName("Verify that getMine() method works as expected")
+    public void getMine_ValidRequest_ReturnsValidList() {
+        Company firstCompany = createCompany(UUID.randomUUID());
+        Company secondCompany = createCompany(UUID.randomUUID());
+        Company thirdCompany = createCompany(UUID.randomUUID());
+
+        List<Company> companyList = new ArrayList<>();
+        companyList.add(firstCompany);
+        companyList.add(secondCompany);
+        companyList.add(thirdCompany);
+
+        User user = new User();
+        user.setId(1L);
+
+        CompanyResponseDto firstResponseDto = createResponseDto(firstCompany);
+        CompanyResponseDto secondResponseDto = createResponseDto(secondCompany);
+        CompanyResponseDto thirdResponseDto = createResponseDto(thirdCompany);
+
+        List<CompanyResponseDto> expectedList = new ArrayList<>(companyList.size());
+        expectedList.add(firstResponseDto);
+        expectedList.add(secondResponseDto);
+        expectedList.add(thirdResponseDto);
+
+        Pageable pageable = PageRequest.of(0, 5);
+
+        when(companyRepository.findAllByOwnerId(user.getId(), pageable)).thenReturn(companyList);
+        when(companyMapper.toResponseDto(firstCompany)).thenReturn(firstResponseDto);
+        when(companyMapper.toResponseDto(secondCompany)).thenReturn(secondResponseDto);
+        when(companyMapper.toResponseDto(thirdCompany)).thenReturn(thirdResponseDto);
+
+        List<CompanyResponseDto> actualList = companyServiceImpl.getMine(user, pageable);
+
+        assertEquals(expectedList, actualList);
+    }
+
     private Company createCompanyFromRequestDto(CreateCompanyRequestDto requestDto, Long userId) {
         return new Company()
                 .setId(UUID.randomUUID())
@@ -350,4 +410,3 @@ class CompanyServiceImplTest {
                 .setOwnerId(1L);
     }
 }
-
