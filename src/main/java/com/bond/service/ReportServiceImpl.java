@@ -82,6 +82,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    @Transactional
     public ReportResponseDto update(UUID reportId, UpdateReportRequestDto requestDto) {
         Report report = reportRepository
                 .findById(reportId)
