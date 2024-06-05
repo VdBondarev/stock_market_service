@@ -11,11 +11,14 @@ import static org.mockito.Mockito.when;
 import com.bond.dto.report.CreateReportRequestDto;
 import com.bond.dto.report.ReportResponseDto;
 import com.bond.dto.report.UpdateReportRequestDto;
+import com.bond.dto.report.details.ReportDetailsResponseDto;
 import com.bond.mapper.ReportDetailsMapper;
 import com.bond.mapper.ReportMapper;
 import com.bond.model.Company;
 import com.bond.model.Report;
+import com.bond.model.ReportDetails;
 import com.bond.model.User;
+import com.bond.model.data.FinancialData;
 import com.bond.repository.CompanyRepository;
 import com.bond.repository.ReportDetailsRepository;
 import com.bond.repository.ReportRepository;
@@ -60,9 +63,9 @@ class ReportServiceImplTest {
     @Test
     @DisplayName("Verify that getAll() method works as expected")
     public void getAll_ValidInputParams_ReturnsValidList() {
-        Report firstReport = createReport(UUID.randomUUID());
-        Report secondReport = createReport(UUID.randomUUID());
-        Report thirdReport = createReport(UUID.randomUUID());
+        Report firstReport = createReport(UUID.randomUUID(), UUID.randomUUID());
+        Report secondReport = createReport(UUID.randomUUID(), UUID.randomUUID());
+        Report thirdReport = createReport(UUID.randomUUID(), UUID.randomUUID());
 
         List<Report> reports = new ArrayList<>();
         reports.add(firstReport);
@@ -98,7 +101,7 @@ class ReportServiceImplTest {
     public void getById_ValidInputParams_ReturnsValidDto() {
         UUID id = UUID.randomUUID();
 
-        Report report = createReport(id);
+        Report report = createReport(id, UUID.randomUUID());
 
         ReportResponseDto expectedDto = createResponseDtoFromModel(report);
 
@@ -219,9 +222,9 @@ class ReportServiceImplTest {
 
         UUID reportId = UUID.randomUUID();
 
-        Report report = createReport(reportId);
+        Report report = createReport(reportId, UUID.randomUUID());
 
-        Report updatedReport = createReport(report.getId());
+        Report updatedReport = createReport(report.getId(), report.getCompanyId());
         updatedReport.setNetProfit(requestDto.getNetProfit());
         updatedReport.setTotalRevenue(requestDto.getTotalRevenue());
 
@@ -262,6 +265,92 @@ class ReportServiceImplTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    @Test
+    @DisplayName("Verify that getAllReportsForCompany() method works as expected")
+    public void getAllReportsForCompany_ReturnsAllReportsForCompany() {
+        UUID companyId = UUID.randomUUID();
+
+        Report firstReport = createReport(UUID.randomUUID(), companyId);
+        Report secondReport = createReport(UUID.randomUUID(), companyId);
+        Report thirdReport = createReport(UUID.randomUUID(), companyId);
+
+        List<Report> reportList = new ArrayList<>();
+        reportList.add(firstReport);
+        reportList.add(secondReport);
+        reportList.add(thirdReport);
+
+        ReportResponseDto firstResponseDto = createResponseDtoFromModel(firstReport);
+        ReportResponseDto secondResponseDto = createResponseDtoFromModel(secondReport);
+        ReportResponseDto thirdResponseDto = createResponseDtoFromModel(thirdReport);
+
+        List<ReportResponseDto> expectedResponseList = new ArrayList<>();
+        expectedResponseList.add(firstResponseDto);
+        expectedResponseList.add(secondResponseDto);
+        expectedResponseList.add(thirdResponseDto);
+
+        Pageable pageable = PageRequest.of(0, 5);
+
+        when(reportRepository.findAllByCompanyId(companyId, pageable)).thenReturn(reportList);
+        when(reportMapper.toResponseDto(firstReport)).thenReturn(firstResponseDto);
+        when(reportMapper.toResponseDto(secondReport)).thenReturn(secondResponseDto);
+        when(reportMapper.toResponseDto(thirdReport)).thenReturn(thirdResponseDto);
+
+        List<ReportResponseDto> actualResponseList =
+                reportService.getAllReportsForCompany(companyId, pageable);
+
+        assertEquals(expectedResponseList, actualResponseList);
+    }
+
+    @Test
+    @DisplayName("Verify that getReportDetails() method works as expected with a valid id")
+    public void getReportDetails_ValidInputParams_ReturnsValidDto() {
+        FinancialData financialData = new FinancialData();
+        financialData.setNetProfitMargin(BigDecimal.TEN);
+        financialData.setTotalRevenue(BigDecimal.TEN);
+        financialData.setNetProfitMargin(BigDecimal.ZERO);
+
+        UUID reportId = UUID.randomUUID();
+
+        ReportDetails reportDetails = new ReportDetails();
+        reportDetails.setType(ReportDetails.Type.CREATE);
+        reportDetails.setReportId(reportId);
+        reportDetails.setComments("Mocked comment");
+        reportDetails.setFinancialData(financialData);
+
+        ReportDetailsResponseDto expectedDto = new ReportDetailsResponseDto();
+        expectedDto.setReportId(reportId);
+        expectedDto.setComments(reportDetails.getComments());
+        expectedDto.setFinancialData(financialData);
+        expectedDto.setType(ReportDetails.Type.CREATE);
+
+        when(reportDetailsRepository.findByReportId(reportId))
+                .thenReturn(Optional.of(reportDetails));
+        when(reportDetailsMapper.toResponseDto(reportDetails))
+                .thenReturn(expectedDto);
+
+        ReportDetailsResponseDto actualDto = reportService.getReportDetails(reportId);
+
+        assertEquals(expectedDto, actualDto);
+    }
+
+    @Test
+    @DisplayName(
+            "Verify that getReportDetails() throws an exception when passing a non-valid report id"
+    )
+    public void getReportDetails_NonExistingReportId_ThrowsException() {
+        UUID reportId = UUID.randomUUID();
+
+        when(reportDetailsRepository.findByReportId(reportId)).thenReturn(Optional.empty());
+
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
+                () -> reportService.getReportDetails(reportId));
+
+        String expectedMessage = "Report details for a report with id " + reportId + " not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
     private Report createReportFromRequestDto(CreateReportRequestDto requestDto) {
         return new Report()
                 .setCompanyId(requestDto.getCompanyId())
@@ -288,65 +377,12 @@ class ReportServiceImplTest {
                 .setTotalRevenue(report.getTotalRevenue());
     }
 
-    private Report createReport(UUID id) {
+    private Report createReport(UUID id, UUID companyId) {
         return new Report()
                 .setReportDate(now())
                 .setId(id)
-                .setCompanyId(UUID.randomUUID())
+                .setCompanyId(companyId)
                 .setTotalRevenue(BigDecimal.TEN)
                 .setNetProfit(BigDecimal.TEN);
     }
 }
-/**
- *
- *
- *
- *
- *
- *     @Override
- *     public List<ReportResponseDto> getAllReportsForCompany(UUID companyId, Pageable pageable) {
- *         return reportRepository.findAllByCompanyId(companyId)
- *                 .stream()
- *                 .map(reportMapper::toResponseDto)
- *                 .collect(Collectors.toList());
- *     }
- *
- *     @Override
- *     public ReportDetailsResponseDto getReportDetails(UUID reportId) {
- *         ReportDetails reportDetails = reportDetailsRepository.findByReportId(reportId)
- *                 .orElseThrow(() -> new EntityNotFoundException(
- *                         "Report details for a report with id " + reportId + " not found")
- *                 );
- *         return reportDetailsMapper.toResponseDto(reportDetails);
- *     }
- *
- *     private boolean allowedToInteract(Company company, User user) {
- *         return company.getOwnerId().equals(user.getId()) || user.getRoles().size() != TWO;
- *     }
- *
- *     private ReportDetails createReportDetails(Report report, ReportDetails.Type type) {
- *         FinancialData financialData = new FinancialData()
- *                 .setNetProfit(report.getNetProfit())
- *                 .setTotalRevenue(report.getTotalRevenue());
- *         if (report.getTotalRevenue().equals(BigDecimal.ZERO)) {
- *             financialData.setNetProfitMargin(BigDecimal.ZERO);
- *         } else {
- *             financialData.setNetProfitMargin(report.getNetProfit()
- *                     .divide(
- *                             report.getTotalRevenue(), RoundingMode.HALF_UP)
- *             );
- *         }
- *         return new ReportDetails()
- *                 .setFinancialData(financialData)
- *                 .setReportId(report.getId())
- *                 .setComments(
- *                 "Report for company with id "
- *                         + report.getCompanyId()
- *                         + " created "
- *                         + report.getReportDate()
- *         )
- *                 .setType(type);
- *     }
- * }
- *
- */

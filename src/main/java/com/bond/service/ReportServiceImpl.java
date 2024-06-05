@@ -97,7 +97,7 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public List<ReportResponseDto> getAllReportsForCompany(UUID companyId, Pageable pageable) {
-        return reportRepository.findAllByCompanyId(companyId)
+        return reportRepository.findAllByCompanyId(companyId, pageable)
                 .stream()
                 .map(reportMapper::toResponseDto)
                 .collect(Collectors.toList());

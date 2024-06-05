@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/ReportServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/ReportServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,9 +73,12 @@
     "JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany.executor": "Run",
     "JUnit.ReportServiceImplTest.getAll_ValidInputParams_ReturnsValidList.executor": "Run",
     "JUnit.ReportServiceImplTest.getById_NonValidId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto.executor": "Run",
     "JUnit.UserServiceImplTest.getAll_ValidPageable_ReturnsAllUsers.executor": "Run",
     "JUnit.UserServiceImplTest.getById_NonValidInput_ThrowsException.executor": "Run",
@@ -146,8 +152,8 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException">
-    <configuration name="ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException">
+    <configuration name="ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -157,13 +163,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
       <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="create_NonExistingCompanyId_ThrowsException" />
+      <option name="METHOD_NAME" value="getAllReportsForCompany_ReturnsAllReportsForCompany" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -173,13 +179,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
       <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="create_NotAllowedToInteractUser_ThrowsException" />
+      <option name="METHOD_NAME" value="getReportDetails_NonExistingReportId_ThrowsException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -189,7 +195,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
       <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="create_ValidInputParams_ReturnsValidDto" />
+      <option name="METHOD_NAME" value="getReportDetails_ValidInputParams_ReturnsValidDto" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -270,9 +276,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException" />
-      <item itemvalue="JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException" />
-      <item itemvalue="JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto" />
+      <item itemvalue="JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" />
+      <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" />
+      <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" />
       <item itemvalue="JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException" />
       <item itemvalue="JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
@@ -280,11 +286,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" />
+        <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" />
+        <item itemvalue="JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" />
         <item itemvalue="JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException" />
         <item itemvalue="JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" />
-        <item itemvalue="JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException" />
-        <item itemvalue="JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException" />
-        <item itemvalue="JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +320,7 @@
       <workItem from="1717569455552" duration="108000" />
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
-      <workItem from="1717589460297" duration="3059000" />
+      <workItem from="1717589460297" duration="4136000" />
     </task>
     <servers />
   </component>
