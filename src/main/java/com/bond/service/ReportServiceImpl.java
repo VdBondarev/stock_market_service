@@ -19,6 +19,7 @@ import com.bond.repository.ReportRepository;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
@@ -77,8 +78,19 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    @Transactional
     public void delete(UUID id) {
-        reportRepository.deleteById(id);
+        Optional<ReportDetails> reportDetailsOptional = reportDetailsRepository.findByReportId(id);
+        if (reportDetailsOptional.isPresent()) {
+            ReportDetails reportDetails = reportDetailsOptional.get();
+            if (!reportDetails.isDeleted()) {
+                reportDetails.setDeleted(true);
+                reportDetailsRepository.save(reportDetails);
+            }
+        }
+        if (reportRepository.findById(id).isPresent()) {
+            reportRepository.deleteById(id);
+        }
     }
 
     @Override

@@ -2,12 +2,12 @@ package com.bond.model;
 
 import com.bond.model.data.FinancialData;
 import java.util.UUID;
-import javax.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "report_details")
 @Getter
@@ -15,16 +15,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Accessors(chain = true)
 public class ReportDetails {
     @Id
+    @Field(name = "report_id")
     private UUID reportId;
 
-    @Column(nullable = false)
+    @Field("financial_data")
     private FinancialData financialData;
 
     private String comments;
 
-    @Column(nullable = false)
     private Type type;
 
+    @Field("is_deleted")
     private boolean isDeleted = false;
 
     public enum Type {
