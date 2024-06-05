@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Getter
 @Setter
@@ -15,6 +16,7 @@ import lombok.Setter;
         secondField = "repeatPassword",
         message = "Passwords do not match"
 )
+@Accessors(chain = true)
 public class UserRegistrationRequestDto {
     @Email
     @NotBlank
