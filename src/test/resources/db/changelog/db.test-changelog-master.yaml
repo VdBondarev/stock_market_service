@@ -9,3 +9,5 @@ databaseChangeLog:
       file: db/changelog/changes/04-create-test-roles-table.yaml
   - include:
       file: db/changelog/changes/05-create-test-user_roles-table.yaml
+  - include:
+      file: db/changelog/changes/06-insert-test-roles.yaml

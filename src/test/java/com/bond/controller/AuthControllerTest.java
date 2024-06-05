@@ -42,11 +42,17 @@ class AuthControllerTest extends LinksHolder {
     }
 
     @Sql(
-            scripts = { REMOVE_ALL_USERS_FILE_PATH },
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH
+            },
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
     )
     @Sql(
-            scripts = { REMOVE_ALL_USERS_FILE_PATH },
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH
+            },
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     @DisplayName("Verify that registration endpoint works as expected with valid input")
@@ -82,16 +88,20 @@ class AuthControllerTest extends LinksHolder {
             "Verify that registration endpoint works as expected when passing a registered email"
     )
     @Sql(
-            scripts = {INSERT_USER_TO_DATABASE_FILE_PATH},
+            scripts = {
+                    INSERT_USER_TO_DATABASE_FILE_PATH
+            },
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
     )
     @Sql(
-            scripts = { REMOVE_ALL_USERS_FILE_PATH },
+            scripts = {
+                    REMOVE_ALL_USERS_FILE_PATH
+            },
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
     )
     void register_AlreadyExistingEmailIsPassed_Failure() throws Exception {
         UserRegistrationRequestDto requestDto = new UserRegistrationRequestDto()
-                .setEmail("admin@example.com")
+                .setEmail("user@example.com")
                 .setLastName("Test")
                 .setFirstName("Test")
                 .setPassword("12345678")
@@ -121,7 +131,8 @@ class AuthControllerTest extends LinksHolder {
     @Sql(
             scripts = {
                     REMOVE_ALL_USERS_FILE_PATH,
-                    INSERT_USER_TO_DATABASE_FILE_PATH
+                    INSERT_USER_TO_DATABASE_FILE_PATH,
+                    REMOVE_ALL_USER_ROLES_FILE_PATH
             },
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
     )
@@ -164,7 +175,7 @@ class AuthControllerTest extends LinksHolder {
     void login_ValidInput_Success() throws Exception {
         UserLoginRequestDto requestDto = new UserLoginRequestDto();
         requestDto.setPassword("1234567890");
-        requestDto.setEmail("admin@example.com");
+        requestDto.setEmail("user@example.com");
 
         String content = objectMapper.writeValueAsString(requestDto);
 

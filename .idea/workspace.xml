@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="" />
+    <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/UserControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-admin-to-user_roles.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-company_owner-to-user_roles.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-five-users-to-database.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/db/changelog/changes/06-insert-test-roles.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/controller/AuthControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/AuthControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/database/insert-admin-roles-to-user_roles-table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/database/insert-user-to-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/database/insert-user-to-database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/db/changelog/db.test-changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/db/changelog/db.test-changelog-master.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
         <option value="JUnit5 Test Class" />
       </list>
     </option>
@@ -48,78 +61,87 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.All in smida_task.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.ApplicationTests.contextLoads.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthenticationServiceTest.login_InvalidInput_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.create_ValidInput_ReturnsValidCompany.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.getAll_ValidPageable_ReturnsValidList.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.getById_ValidId_ReturnsValidResponseDto.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.getAll_ValidInputParams_ReturnsValidList.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.getById_NonValidId_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.getAll_ValidPageable_ReturnsAllUsers.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.getById_NonValidInput_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.getById_ValidInput_ReturnsUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.register_AlreadyRegisteredEmail_ThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.register_ValidRequest_RegistersUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.updateRole_AlreadyOwner_ReturnsNothingUpdated.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.updateRole_UpdateAdminToAdmin_ReturnsNothingUpdated.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.UserServiceImplTest.updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.updateUserRole_AlreadyCustomer_ReturnsNothingUpdated.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceImplTest.updateUserRole_UpdateManagerToCustomer_ReturnsUpdatedUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.com.bond in smida_task.executor&quot;: &quot;Coverage&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Lombok plugin&quot;: &quot;Lombok integration problem&quot;,
-    &quot;Notification.DoNotAsk-Lombok plugin&quot;: &quot;true&quot;,
-    &quot;Remote JVM Debug.Unnamed.executor&quot;: &quot;Debug&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/vladbondarev/my_projects/PROJECTS/smida_task/src/main/java/com/bond/security&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.All in smida_task.executor": "Coverage",
+    "JUnit.ApplicationTests.contextLoads.executor": "Run",
+    "JUnit.AuthControllerTest.executor": "Run",
+    "JUnit.AuthControllerTest.login_ValidInput_Success.executor": "Run",
+    "JUnit.AuthenticationServiceTest.login_InvalidInput_ThrowsException.executor": "Run",
+    "JUnit.AuthenticationServiceTest.login_ValidRequest_ReturnsValidToken.executor": "Run",
+    "JUnit.CompanyServiceImplTest.create_PassedCompanyAlreadyExists_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.create_ValidInput_ReturnsValidCompany.executor": "Run",
+    "JUnit.CompanyServiceImplTest.getAll_ValidPageable_ReturnsValidList.executor": "Run",
+    "JUnit.CompanyServiceImplTest.getById_NonValidPassedId_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.getById_ValidId_ReturnsValidResponseDto.executor": "Run",
+    "JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidNameToUpdate_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException.executor": "Run",
+    "JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse.executor": "Run",
+    "JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany.executor": "Run",
+    "JUnit.ReportServiceImplTest.getAll_ValidInputParams_ReturnsValidList.executor": "Run",
+    "JUnit.ReportServiceImplTest.getById_NonValidId_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.UserControllerTest.getAll_ValidInput_Success.executor": "Run",
+    "JUnit.UserControllerTest.getById_ValidInput_Success.executor": "Run",
+    "JUnit.UserControllerTest.updateRole_AdminToAdmin_NothingUpdated.executor": "Run",
+    "JUnit.UserControllerTest.updateRole_AdminToCompanyOwner_Success.executor": "Run",
+    "JUnit.UserControllerTest.updateRole_CompanyOwnerToAdmin_Success.executor": "Run",
+    "JUnit.UserControllerTest.updateRole_CompanyOwnerToCompanyOwner_NothingUpdated.executor": "Run",
+    "JUnit.UserServiceImplTest.getAll_ValidPageable_ReturnsAllUsers.executor": "Run",
+    "JUnit.UserServiceImplTest.getById_NonValidInput_ThrowsException.executor": "Run",
+    "JUnit.UserServiceImplTest.getById_ValidInput_ReturnsUser.executor": "Run",
+    "JUnit.UserServiceImplTest.register_AlreadyRegisteredEmail_ThrowsException.executor": "Run",
+    "JUnit.UserServiceImplTest.register_ValidRequest_RegistersUser.executor": "Run",
+    "JUnit.UserServiceImplTest.updateRole_AlreadyOwner_ReturnsNothingUpdated.executor": "Run",
+    "JUnit.UserServiceImplTest.updateRole_UpdateAdminToAdmin_ReturnsNothingUpdated.executor": "Debug",
+    "JUnit.UserServiceImplTest.updateRole_UpdateOwnerToAdmin_ReturnsUpdatedUser.executor": "Run",
+    "JUnit.UserServiceImplTest.updateUserRole_AlreadyCustomer_ReturnsNothingUpdated.executor": "Run",
+    "JUnit.UserServiceImplTest.updateUserRole_UpdateManagerToCustomer_ReturnsUpdatedUser.executor": "Run",
+    "JUnit.com.bond in smida_task.executor": "Coverage",
+    "JUnit.java in smida_task.executor": "Coverage",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok integration problem",
+    "Notification.DoNotAsk-Lombok plugin": "true",
+    "Remote JVM Debug.Unnamed.executor": "Debug",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Application.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/vladbondarev/my_projects/PROJECTS/smida_task/src/test/resources/db/changelog/changes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;,
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql",
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.bond.mapper" />
@@ -129,16 +151,17 @@
       <recent name="com.bond.exception" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/bond/security" />
+      <recent name="$PROJECT_DIR$/src/test/resources/db/changelog/changes" />
+      <recent name="$PROJECT_DIR$/src/test/resources/database" />
       <recent name="$PROJECT_DIR$/src/test/resources/db/changelog" />
-      <recent name="$PROJECT_DIR$/src/main/resources/db/changelog/changes" />
-      <recent name="$PROJECT_DIR$/src/test/java/com/bond" />
-      <recent name="$PROJECT_DIR$/src/main/resources/db/changelog" />
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/bond/security" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.bond.controller" />
       <recent name="com.bond.service" />
       <recent name="com.bond.service.impl" />
       <recent name="com.bond.security" />
@@ -148,73 +171,83 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in smida_task">
-    <configuration name="All in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserControllerTest.delete_ValidId_Success">
+    <configuration name="UserControllerTest.delete_ValidId_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="PATTERN" value="com.bond.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="getAllReportsForCompany_ReturnsAllReportsForCompany" />
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="delete_ValidId_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest.updateRole_AdminToAdmin_NothingUpdated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="PATTERN" value="com.bond.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="getReportDetails_NonExistingReportId_ThrowsException" />
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="updateRole_AdminToAdmin_NothingUpdated" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest.updateRole_AdminToCompanyOwner_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="PATTERN" value="com.bond.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="getReportDetails_ValidInputParams_ReturnsValidDto" />
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="updateRole_AdminToCompanyOwner_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.bond in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest.updateRole_CompanyOwnerToAdmin_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.*" />
+          <option name="PATTERN" value="com.bond.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="updateRole_CompanyOwnerToAdmin_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerTest.updateRole_CompanyOwnerToCompanyOwner_NothingUpdated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="updateRole_CompanyOwnerToCompanyOwner_NothingUpdated" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -262,21 +295,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.All in smida_task" />
-      <item itemvalue="JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" />
-      <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" />
-      <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" />
-      <item itemvalue="JUnit.com.bond in smida_task" />
+      <item itemvalue="JUnit.UserControllerTest.delete_ValidId_Success" />
+      <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToAdmin_NothingUpdated" />
+      <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToCompanyOwner_Success" />
+      <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToAdmin_Success" />
+      <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToCompanyOwner_NothingUpdated" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in smida_task" />
-        <item itemvalue="JUnit.com.bond in smida_task" />
-        <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" />
-        <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" />
-        <item itemvalue="JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" />
+        <item itemvalue="JUnit.UserControllerTest.delete_ValidId_Success" />
+        <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToCompanyOwner_NothingUpdated" />
+        <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToAdmin_NothingUpdated" />
+        <item itemvalue="JUnit.UserControllerTest.updateRole_AdminToCompanyOwner_Success" />
+        <item itemvalue="JUnit.UserControllerTest.updateRole_CompanyOwnerToAdmin_Success" />
       </list>
     </recent_temporary>
   </component>
@@ -307,6 +340,7 @@
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
       <workItem from="1717589460297" duration="5193000" />
+      <workItem from="1717596377596" duration="5475000" />
     </task>
     <servers />
   </component>
@@ -336,12 +370,18 @@
           <line>228</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bond/controller/UserControllerTest.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/smida_task$All_in_smida_task.ic" NAME="All in smida_task Coverage Results" MODIFIED="1717573444873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/smida_task$com_bond_in_smida_task.ic" NAME="com.bond in smida_task Coverage Results" MODIFIED="1717593826344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/smida_task$All_in_smida_task.ic" NAME="All in smida_task Coverage Results" MODIFIED="1717596409217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/smida_task$java_in_smida_task.ic" NAME="java in smida_task Coverage Results" MODIFIED="1717598705975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/smida_task$com_bond_in_smida_task.ic" NAME="com.bond in smida_task Coverage Results" MODIFIED="1717599723806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.bond.*</FILTER>
     </SUITE>
   </component>
