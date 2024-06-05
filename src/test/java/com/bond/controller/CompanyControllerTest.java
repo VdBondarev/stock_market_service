@@ -38,8 +38,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CompanyControllerTest extends LinksHolder {
-    public static final String AUTHORIZATION = "AUTHORIZATION";
     protected static MockMvc mockMvc;
+    private static final String AUTHORIZATION = "AUTHORIZATION";
     private static final String BEARER = "Bearer";
     private static final String ADMIN = "ADMIN";
     private static final String COMPANY_OWNER = "COMPANY_OWNER";

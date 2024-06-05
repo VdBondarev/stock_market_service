@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/TestDemo1124Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/ReportControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/database/remove-all-reports.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/ReportDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/ReportDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/ReportServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/ReportServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/CreateReportRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/CreateReportRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/config/CustomMongoDbContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/controller/CompanyControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/CompanyControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +26,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -64,6 +70,7 @@
     &quot;JUnit.CompanyControllerTest.create_ExistingNameIsPassed_Failure.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CompanyControllerTest.create_ValidInput_Success.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CompanyControllerTest.delete_ValidRequest_Success.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CompanyControllerTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CompanyControllerTest.getAll_ValidRequest_Success.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CompanyControllerTest.getById_ValidInput_Success.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CompanyControllerTest.getMine_ValidRequest_Success.executor&quot;: &quot;Run&quot;,
@@ -81,6 +88,8 @@
     &quot;JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReportControllerTest.create_ValidRequest_Success.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReportControllerTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto.executor&quot;: &quot;Run&quot;,
@@ -175,8 +184,16 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto">
-    <configuration name="CompanyControllerTest.delete_ValidRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ReportControllerTest">
+    <configuration name="All in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CompanyControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -186,13 +203,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="delete_ValidRequest_Success" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyControllerTest.getMine_ValidRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompanyControllerTest.create_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -202,13 +218,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="getMine_ValidRequest_Success" />
+      <option name="METHOD_NAME" value="create_ValidInput_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyControllerTest.update_NameAlreadyTaken_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -217,33 +233,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.controller.CompanyControllerTest" />
-      <option name="METHOD_NAME" value="update_NameAlreadyTaken_Failure" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.ReportControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportControllerTest.create_ValidRequest_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="PATTERN" value="com.bond.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="update_ValidInputParams_ReturnsValidDto" />
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.ReportControllerTest" />
+      <option name="METHOD_NAME" value="create_ValidRequest_Success" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="service in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/com/bond/service" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -291,21 +298,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" />
-      <item itemvalue="JUnit.CompanyControllerTest.delete_ValidRequest_Success" />
-      <item itemvalue="JUnit.CompanyControllerTest.getMine_ValidRequest_Success" />
-      <item itemvalue="JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure" />
-      <item itemvalue="JUnit.service in smida_task" />
+      <item itemvalue="JUnit.All in smida_task" />
+      <item itemvalue="JUnit.CompanyControllerTest" />
+      <item itemvalue="JUnit.CompanyControllerTest.create_ValidInput_Success" />
+      <item itemvalue="JUnit.ReportControllerTest" />
+      <item itemvalue="JUnit.ReportControllerTest.create_ValidRequest_Success" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" />
-        <item itemvalue="JUnit.CompanyControllerTest.getMine_ValidRequest_Success" />
-        <item itemvalue="JUnit.service in smida_task" />
-        <item itemvalue="JUnit.CompanyControllerTest.delete_ValidRequest_Success" />
-        <item itemvalue="JUnit.CompanyControllerTest.update_NameAlreadyTaken_Failure" />
+        <item itemvalue="JUnit.ReportControllerTest" />
+        <item itemvalue="JUnit.ReportControllerTest.create_ValidRequest_Success" />
+        <item itemvalue="JUnit.CompanyControllerTest" />
+        <item itemvalue="JUnit.CompanyControllerTest.create_ValidInput_Success" />
+        <item itemvalue="JUnit.All in smida_task" />
       </list>
     </recent_temporary>
   </component>
@@ -337,7 +344,8 @@
       <workItem from="1717584175191" duration="2175000" />
       <workItem from="1717589460297" duration="5193000" />
       <workItem from="1717596377596" duration="11789000" />
-      <workItem from="1717611824491" duration="726000" />
+      <workItem from="1717611824491" duration="10183000" />
+      <workItem from="1717622038889" duration="369000" />
     </task>
     <servers />
   </component>
@@ -372,11 +380,16 @@
           <line>287</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/smida_task$All_in_smida_task.ic" NAME="All in smida_task Coverage Results" MODIFIED="1717602290346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/smida_task$All_in_smida_task.ic" NAME="All in smida_task Coverage Results" MODIFIED="1717616179023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/smida_task$java_in_smida_task.ic" NAME="java in smida_task Coverage Results" MODIFIED="1717598705975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/smida_task$com_bond_in_smida_task.ic" NAME="com.bond in smida_task Coverage Results" MODIFIED="1717599723806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.bond.*</FILTER>
