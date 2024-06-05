@@ -1,4 +1,4 @@
-package com.bond.service.impl;
+package com.bond.service;
 
 import static java.time.LocalDateTime.now;
 
@@ -9,7 +9,6 @@ import com.bond.mapper.CompanyMapper;
 import com.bond.model.Company;
 import com.bond.model.User;
 import com.bond.repository.CompanyRepository;
-import com.bond.service.CompanyService;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -62,6 +61,12 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyResponseDto update(UUID id, CompanyUpdateRequestDto requestDto, User user) {
+        if (!isValid(requestDto)) {
+            throw new IllegalArgumentException(
+                    "Update request is not valid. "
+                            + "Update must be performed by at least one non-empty field."
+            );
+        }
         Company company = companyRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Company with id " + id + " not found"
@@ -77,14 +82,8 @@ public class CompanyServiceImpl implements CompanyService {
                     "You do not have permission to update this company"
             );
         }
-        if (isValid(requestDto)) {
-            companyMapper.updateModel(company, requestDto);
-            return companyMapper.toResponseDto(companyRepository.save(company));
-        }
-        throw new IllegalArgumentException(
-                "Update request is not valid. "
-                        + "Update must be performed by at least one non-empty field."
-        );
+        company = companyMapper.updateModel(company, requestDto);
+        return companyMapper.toResponseDto(companyRepository.save(company));
     }
 
     @Override

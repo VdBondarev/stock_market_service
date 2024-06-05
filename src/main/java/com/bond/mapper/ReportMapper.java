@@ -15,5 +15,5 @@ public interface ReportMapper {
 
     Report toModel(CreateReportRequestDto requestDto);
 
-    void updateModel(@MappingTarget Report report, UpdateReportRequestDto requestDto);
+    Report updateModel(@MappingTarget Report report, UpdateReportRequestDto requestDto);
 }

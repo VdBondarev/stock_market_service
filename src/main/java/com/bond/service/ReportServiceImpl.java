@@ -1,4 +1,4 @@
-package com.bond.service.impl;
+package com.bond.service;
 
 import static java.time.LocalDateTime.now;
 
@@ -16,7 +16,6 @@ import com.bond.model.data.FinancialData;
 import com.bond.repository.CompanyRepository;
 import com.bond.repository.ReportDetailsRepository;
 import com.bond.repository.ReportRepository;
-import com.bond.service.ReportService;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -89,7 +88,7 @@ public class ReportServiceImpl implements ReportService {
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Report with id " + reportId + " not found")
                 );
-        reportMapper.updateModel(report, requestDto);
+        report = reportMapper.updateModel(report, requestDto);
         reportRepository.save(report);
         ReportDetails reportDetails = createReportDetails(report, ReportDetails.Type.UPDATE);
         reportDetailsRepository.save(reportDetails);
@@ -98,7 +97,7 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public List<ReportResponseDto> getAllReportsForCompany(UUID companyId, Pageable pageable) {
-        return reportRepository.findAllByCompanyId(companyId)
+        return reportRepository.findAllByCompanyId(companyId, pageable)
                 .stream()
                 .map(reportMapper::toResponseDto)
                 .collect(Collectors.toList());
@@ -114,7 +113,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     private boolean allowedToInteract(Company company, User user) {
-        return company.getOwnerId().equals(user.getId()) || user.getRoles().size() != TWO;
+        return company.getOwnerId().equals(user.getId()) || user.getRoles().size() == TWO;
     }
 
     private ReportDetails createReportDetails(Report report, ReportDetails.Type type) {

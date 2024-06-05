@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -19,6 +20,7 @@ import org.hibernate.annotations.Where;
 @Table(name = "companies")
 @SQLDelete(sql = "UPDATE companies SET is_deleted = TRUE WHERE id = ?")
 @Where(clause = "is_deleted = false")
+@Accessors(chain = true)
 public class Company {
     @Id
     @GeneratedValue(generator = "UUID")

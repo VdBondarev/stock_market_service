@@ -15,5 +15,5 @@ public interface CompanyMapper {
 
     Company toModel(CreateCompanyRequestDto requestDto);
 
-    void updateModel(@MappingTarget Company company, CompanyUpdateRequestDto requestDto);
+    Company updateModel(@MappingTarget Company company, CompanyUpdateRequestDto requestDto);
 }
