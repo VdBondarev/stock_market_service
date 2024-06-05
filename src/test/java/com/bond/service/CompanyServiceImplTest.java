@@ -121,7 +121,10 @@ class CompanyServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that create() method works as expected when company already exists")
+    @DisplayName(
+            "Verify that create() method works as expected when "
+                    + "a company with given name already exists"
+    )
     public void create_PassedCompanyAlreadyExists_ThrowsException() {
         CreateCompanyRequestDto requestDto = new CreateCompanyRequestDto();
         requestDto.setAddress("Existing Test Address");
@@ -177,8 +180,10 @@ class CompanyServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that getById() method throws an exception when a non-valid id is passed")
-    public void getById_NonValidPassedId_ThrowsException() {
+    @DisplayName(
+            "Verify that getById() method throws an exception when a non-valid id is passed"
+    )
+    public void getById_NonValidId_ThrowsException() {
         UUID id = UUID.randomUUID();
 
         when(companyRepository.findById(id)).thenReturn(Optional.empty());
@@ -195,7 +200,7 @@ class CompanyServiceImplTest {
 
     @Test
     @DisplayName("Verify that update() method works as expected with valid input")
-    public void update_ValidInput_ReturnsValidResponse() {
+    public void update_ValidInput_ReturnsValidDto() {
         CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
         requestDto.setAddress("New Test Address");
         requestDto.setName("New Test Name");
@@ -232,7 +237,8 @@ class CompanyServiceImplTest {
 
     @Test
     @DisplayName(
-            "Verify that update() method works as expected when name-to-update already exists"
+            "Verify that update() method works as expected when "
+                    + "a company with the given name already exists"
     )
     public void update_NonValidNameToUpdate_ThrowsException() {
         CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();
@@ -263,7 +269,7 @@ class CompanyServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that update() method works as expected when passing non-valid id")
+    @DisplayName("Verify that update() method works as expected when passing a non-valid id")
     public void update_NonValidId_ThrowsException() {
         UUID id = UUID.randomUUID();
 
@@ -288,8 +294,8 @@ class CompanyServiceImplTest {
     @Test
     @DisplayName(
             "Verify that update() method works as expected "
-                    + "when user is not allowed to update a company's info "
-                    + "(not a admin or a company's owner)"
+                    + "when user is not allowed to update info about a company "
+                    + "(not an admin or a company's owner)"
     )
     public void update_NonValidUser_ThrowsException() {
         CompanyUpdateRequestDto requestDto = new CompanyUpdateRequestDto();

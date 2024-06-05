@@ -36,7 +36,7 @@ class AuthenticationServiceTest {
     private AuthenticationService authenticationService;
 
     @Test
-    @DisplayName("Verify that authenticate method works fine with valid input")
+    @DisplayName("Verify that authenticate() method works as expected with valid input")
     void authenticate_ValidRequest_ReturnsValidToken() {
         UserLoginRequestDto requestDto = new UserLoginRequestDto();
         requestDto.setEmail("test@example.com");

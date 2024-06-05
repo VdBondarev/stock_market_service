@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/repository/ReportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/security/AuthenticationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/security/AuthenticationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/ReportServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/ReportServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +78,7 @@
     "JUnit.ReportServiceImplTest.getAll_ValidInputParams_ReturnsValidList.executor": "Run",
     "JUnit.ReportServiceImplTest.getById_NonValidId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto.executor": "Run",
     "JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto.executor": "Run",
@@ -152,7 +154,7 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException">
+  <component name="RunManager" selected="JUnit.com.bond in smida_task">
     <configuration name="ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
@@ -217,18 +219,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="com.bond in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bond.service.*" />
+          <option name="PATTERN" value="com.bond.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
-      <option name="METHOD_NAME" value="update_ValidInputParams_ReturnsValidDto" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.bond" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -280,17 +280,17 @@
       <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" />
       <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" />
       <item itemvalue="JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException" />
-      <item itemvalue="JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" />
+      <item itemvalue="JUnit.com.bond in smida_task" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.com.bond in smida_task" />
         <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_NonExistingReportId_ThrowsException" />
         <item itemvalue="JUnit.ReportServiceImplTest.getReportDetails_ValidInputParams_ReturnsValidDto" />
         <item itemvalue="JUnit.ReportServiceImplTest.getAllReportsForCompany_ReturnsAllReportsForCompany" />
         <item itemvalue="JUnit.ReportServiceImplTest.update_NonExistingReportId_ThrowsException" />
-        <item itemvalue="JUnit.ReportServiceImplTest.update_ValidInputParams_ReturnsValidDto" />
       </list>
     </recent_temporary>
   </component>
@@ -320,7 +320,7 @@
       <workItem from="1717569455552" duration="108000" />
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
-      <workItem from="1717589460297" duration="4136000" />
+      <workItem from="1717589460297" duration="4837000" />
     </task>
     <servers />
   </component>
@@ -332,22 +332,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java</url>
-          <line>93</line>
+          <line>95</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java</url>
-          <line>143</line>
+          <line>145</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/UserServiceImplTest.java</url>
-          <line>164</line>
+          <line>166</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java</url>
-          <line>223</line>
+          <line>228</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
@@ -355,7 +355,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/smida_task$All_in_smida_task.ic" NAME="All in smida_task Coverage Results" MODIFIED="1717573444873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/smida_task$com_bond_in_smida_task.ic" NAME="com.bond in smida_task Coverage Results" MODIFIED="1717575999698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/smida_task$com_bond_in_smida_task.ic" NAME="com.bond in smida_task Coverage Results" MODIFIED="1717593826344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.bond.*</FILTER>
     </SUITE>
   </component>

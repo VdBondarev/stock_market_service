@@ -49,7 +49,7 @@ class UserServiceImplTest {
 
     @Test
     @DisplayName("Verify that register() method works as expected for valid input params")
-    void register_ValidRequest_RegistersUser() throws RegistrationException {
+    void register_ValidInputParams_RegistersUser() throws RegistrationException {
         UserRegistrationRequestDto requestDto =
                 createRegistrationRequestDto("test@gmail.com", "testPassword");
 
@@ -69,7 +69,9 @@ class UserServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that register() method works as expected for already registered email")
+    @DisplayName(
+            "Verify that register() method works as expected for an already registered email"
+    )
     void register_AlreadyRegisteredEmail_ThrowsException() {
         UserRegistrationRequestDto requestDto =
                 createRegistrationRequestDto("test@gmail.com", "testPassword");
@@ -180,7 +182,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    @DisplayName("Verify that getById() method works as expected with a valid input")
+    @DisplayName("Verify that getById() method works as expected with valid input")
     public void getById_ValidInput_ReturnsUser() {
         Long userId = 1L;
 

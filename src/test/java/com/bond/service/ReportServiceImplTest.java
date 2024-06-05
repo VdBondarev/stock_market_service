@@ -247,7 +247,7 @@ class ReportServiceImplTest {
 
     @Test
     @DisplayName(
-            "Verify that update() method throws an exception when passing non-valid report id"
+            "Verify that update() method throws an exception when passing a non-valid report id"
     )
     public void update_NonExistingReportId_ThrowsException() {
         UUID id = UUID.randomUUID();
@@ -267,7 +267,7 @@ class ReportServiceImplTest {
 
     @Test
     @DisplayName("Verify that getAllReportsForCompany() method works as expected")
-    public void getAllReportsForCompany_ReturnsAllReportsForCompany() {
+    public void getAllReportsForCompany_ValidId_ReturnsAllReportsForCompany() {
         UUID companyId = UUID.randomUUID();
 
         Report firstReport = createReport(UUID.randomUUID(), companyId);
@@ -337,7 +337,7 @@ class ReportServiceImplTest {
     @DisplayName(
             "Verify that getReportDetails() throws an exception when passing a non-valid report id"
     )
-    public void getReportDetails_NonExistingReportId_ThrowsException() {
+    public void getReportDetails_NonValidReportId_ThrowsException() {
         UUID reportId = UUID.randomUUID();
 
         when(reportDetailsRepository.findByReportId(reportId)).thenReturn(Optional.empty());
