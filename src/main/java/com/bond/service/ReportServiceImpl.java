@@ -113,7 +113,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     private boolean allowedToInteract(Company company, User user) {
-        return company.getOwnerId().equals(user.getId()) || user.getRoles().size() != TWO;
+        return company.getOwnerId().equals(user.getId()) || user.getRoles().size() == TWO;
     }
 
     private ReportDetails createReportDetails(Report report, ReportDetails.Type type) {

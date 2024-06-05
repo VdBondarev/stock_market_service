@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/ReportServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/service/CompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/service/CompanyServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/ReportResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/dto/report/ReportResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bond/model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bond/model/Report.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +70,12 @@
     "JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException.executor": "Run",
     "JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse.executor": "Run",
+    "JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto.executor": "Run",
+    "JUnit.ReportServiceImplTest.getAll_ValidInputParams_ReturnsValidList.executor": "Run",
+    "JUnit.ReportServiceImplTest.getById_NonValidId_ThrowsException.executor": "Run",
+    "JUnit.ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto.executor": "Run",
     "JUnit.UserServiceImplTest.getAll_ValidPageable_ReturnsAllUsers.executor": "Run",
     "JUnit.UserServiceImplTest.getById_NonValidInput_ThrowsException.executor": "Run",
     "JUnit.UserServiceImplTest.getById_ValidInput_ReturnsUser.executor": "Run",
@@ -141,8 +148,8 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList">
-    <configuration name="CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException">
+    <configuration name="ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -151,14 +158,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="getMine_ValidRequest_ReturnsValidList" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
+      <option name="METHOD_NAME" value="create_NonExistingCompanyId_ThrowsException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyServiceImplTest.update_NonValidId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -167,14 +174,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="update_NonValidId_ThrowsException" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
+      <option name="METHOD_NAME" value="create_NotAllowedToInteractUser_ThrowsException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -183,14 +190,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="update_NonValidRequestDto_ThrowsException" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
+      <option name="METHOD_NAME" value="create_ValidInputParams_ReturnsValidDto" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyServiceImplTest.update_NonValidUser_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportServiceImplTest.getById_NonValidId_ThrowsException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -199,14 +206,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="update_NonValidUser_ThrowsException" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
+      <option name="METHOD_NAME" value="getById_NonValidId_ThrowsException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -215,8 +222,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.service" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.service.CompanyServiceImplTest" />
-      <option name="METHOD_NAME" value="update_ValidInput_ReturnsValidResponse" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.service.ReportServiceImplTest" />
+      <option name="METHOD_NAME" value="getById_ValidInputParams_ReturnsValidDto" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -265,21 +272,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList" />
-      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException" />
-      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException" />
-      <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException" />
-      <item itemvalue="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" />
+      <item itemvalue="JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException" />
+      <item itemvalue="JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException" />
+      <item itemvalue="JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto" />
+      <item itemvalue="JUnit.ReportServiceImplTest.getById_NonValidId_ThrowsException" />
+      <item itemvalue="JUnit.ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CompanyServiceImplTest.getMine_ValidRequest_ReturnsValidList" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidRequestDto_ThrowsException" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidUser_ThrowsException" />
-        <item itemvalue="JUnit.CompanyServiceImplTest.update_NonValidId_ThrowsException" />
+        <item itemvalue="JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException" />
+        <item itemvalue="JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException" />
+        <item itemvalue="JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto" />
+        <item itemvalue="JUnit.ReportServiceImplTest.getById_NonValidId_ThrowsException" />
+        <item itemvalue="JUnit.ReportServiceImplTest.getById_ValidInputParams_ReturnsValidDto" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +316,7 @@
       <workItem from="1717569455552" duration="108000" />
       <workItem from="1717569587249" duration="7535000" />
       <workItem from="1717584175191" duration="2175000" />
-      <workItem from="1717589460297" duration="761000" />
+      <workItem from="1717589460297" duration="2377000" />
     </task>
     <servers />
   </component>

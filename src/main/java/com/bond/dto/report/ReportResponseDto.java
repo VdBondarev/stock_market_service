@@ -3,11 +3,11 @@ package com.bond.dto.report;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-@Getter
-@Setter
+@Data
+@Accessors(chain = true)
 public class ReportResponseDto {
     private UUID id;
     private UUID companyId;
