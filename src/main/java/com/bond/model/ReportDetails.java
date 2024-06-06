@@ -25,8 +25,7 @@ public class ReportDetails {
 
     private Type type;
 
-    @Field("is_deleted")
-    private boolean isDeleted = false;
+    private boolean deleted = false;
 
     public enum Type {
         CREATE,
