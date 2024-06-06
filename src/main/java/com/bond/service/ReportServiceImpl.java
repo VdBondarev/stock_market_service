@@ -80,7 +80,8 @@ public class ReportServiceImpl implements ReportService {
     @Override
     @Transactional
     public void delete(UUID id) {
-        Optional<ReportDetails> reportDetailsOptional = reportDetailsRepository.findByReportId(id);
+        Optional<ReportDetails> reportDetailsOptional = reportDetailsRepository
+                .findByReportIdAndDeleted(id, false);
         if (reportDetailsOptional.isPresent()) {
             ReportDetails reportDetails = reportDetailsOptional.get();
             if (!reportDetails.isDeleted()) {
@@ -118,7 +119,8 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public ReportDetailsResponseDto getReportDetails(UUID reportId) {
-        ReportDetails reportDetails = reportDetailsRepository.findByReportId(reportId)
+        ReportDetails reportDetails = reportDetailsRepository
+                .findByReportIdAndDeleted(reportId, false)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Report details for a report with id " + reportId + " not found")
                 );
