@@ -2,7 +2,6 @@ package com.bond.controller;
 
 import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -17,7 +16,6 @@ import com.bond.repository.CompanyRepository;
 import com.bond.security.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.UUID;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +31,9 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CompanyControllerTest extends LinksHolder {
-    protected static MockMvc mockMvc;
     private static final String AUTHORIZATION = "AUTHORIZATION";
     private static final String BEARER = "Bearer";
     private static final String ADMIN = "ADMIN";
@@ -50,6 +45,8 @@ class CompanyControllerTest extends LinksHolder {
     private static final String OWNER_ID_FIELD = "ownerId";
     private static final String ID_FIELD = "id";
     @Autowired
+    private MockMvc mockMvc;
+    @Autowired
     private ObjectMapper objectMapper;
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -57,14 +54,6 @@ class CompanyControllerTest extends LinksHolder {
     private JwtUtil jwtUtil;
     @Autowired
     private CompanyRepository companyRepository;
-
-    @BeforeAll
-    static void beforeAll(@Autowired WebApplicationContext applicationContext) {
-        mockMvc = MockMvcBuilders
-                .webAppContextSetup(applicationContext)
-                .apply(springSecurity())
-                .build();
-    }
 
     @Sql(
             scripts = {

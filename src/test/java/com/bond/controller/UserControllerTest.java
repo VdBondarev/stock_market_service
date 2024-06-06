@@ -1,7 +1,6 @@
 package com.bond.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
@@ -12,7 +11,6 @@ import com.bond.holder.LinksHolder;
 import com.bond.model.User;
 import com.bond.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,28 +22,19 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class UserControllerTest extends LinksHolder {
-    protected static MockMvc mockMvc;
     private static final String ADMIN_EMAIL = "admin@example.com";
     private static final String ADMIN = "ADMIN";
     private static final int ONE = 1;
     private static final int TWO = 2;
     @Autowired
+    private MockMvc mockMvc;
+    @Autowired
     private ObjectMapper objectMapper;
     @Autowired
     private UserRepository userRepository;
-
-    @BeforeAll
-    static void beforeAll(@Autowired WebApplicationContext applicationContext) {
-        mockMvc = MockMvcBuilders
-                .webAppContextSetup(applicationContext)
-                .apply(springSecurity())
-                .build();
-    }
 
     @Sql(
             scripts = {

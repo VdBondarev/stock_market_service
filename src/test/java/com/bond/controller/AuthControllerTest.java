@@ -2,7 +2,6 @@ package com.bond.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -13,7 +12,6 @@ import com.bond.dto.user.UserRegistrationRequestDto;
 import com.bond.dto.user.UserResponseDto;
 import com.bond.holder.LinksHolder;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,24 +20,15 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AuthControllerTest extends LinksHolder {
-    protected static MockMvc mockMvc;
     private static final String JWT_REGEX =
             "^[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_.+/=]*$";
     @Autowired
+    private MockMvc mockMvc;
+    @Autowired
     private ObjectMapper objectMapper;
-
-    @BeforeAll
-    static void beforeAll(@Autowired WebApplicationContext applicationContext) {
-        mockMvc = MockMvcBuilders
-                .webAppContextSetup(applicationContext)
-                .apply(springSecurity())
-                .build();
-    }
 
     @Sql(
             scripts = {
