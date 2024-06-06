@@ -323,7 +323,7 @@ class ReportServiceImplTest {
         expectedDto.setFinancialData(financialData);
         expectedDto.setType(ReportDetails.Type.CREATE);
 
-        when(reportDetailsRepository.findByReportId(reportId))
+        when(reportDetailsRepository.findByReportIdAndDeleted(reportId, false))
                 .thenReturn(Optional.of(reportDetails));
         when(reportDetailsMapper.toResponseDto(reportDetails))
                 .thenReturn(expectedDto);
@@ -340,7 +340,8 @@ class ReportServiceImplTest {
     public void getReportDetails_NonValidReportId_ThrowsException() {
         UUID reportId = UUID.randomUUID();
 
-        when(reportDetailsRepository.findByReportId(reportId)).thenReturn(Optional.empty());
+        when(reportDetailsRepository.findByReportIdAndDeleted(reportId, false))
+                .thenReturn(Optional.empty());
 
         EntityNotFoundException exception = assertThrows(EntityNotFoundException.class,
                 () -> reportService.getReportDetails(reportId));

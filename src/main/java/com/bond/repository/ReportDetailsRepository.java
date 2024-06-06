@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ReportDetailsRepository extends MongoRepository<ReportDetails, UUID> {
 
-    Optional<ReportDetails> findByReportId(UUID reportId);
+    Optional<ReportDetails> findByReportIdAndDeleted(UUID reportId, boolean isDeleted);
 }

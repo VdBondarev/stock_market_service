@@ -19,6 +19,7 @@ import com.bond.repository.ReportRepository;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
@@ -77,11 +78,24 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
+    @Transactional
     public void delete(UUID id) {
-        reportRepository.deleteById(id);
+        Optional<ReportDetails> reportDetailsOptional = reportDetailsRepository
+                .findByReportIdAndDeleted(id, false);
+        if (reportDetailsOptional.isPresent()) {
+            ReportDetails reportDetails = reportDetailsOptional.get();
+            if (!reportDetails.isDeleted()) {
+                reportDetails.setDeleted(true);
+                reportDetailsRepository.save(reportDetails);
+            }
+        }
+        if (reportRepository.findById(id).isPresent()) {
+            reportRepository.deleteById(id);
+        }
     }
 
     @Override
+    @Transactional
     public ReportResponseDto update(UUID reportId, UpdateReportRequestDto requestDto) {
         Report report = reportRepository
                 .findById(reportId)
@@ -105,7 +119,8 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public ReportDetailsResponseDto getReportDetails(UUID reportId) {
-        ReportDetails reportDetails = reportDetailsRepository.findByReportId(reportId)
+        ReportDetails reportDetails = reportDetailsRepository
+                .findByReportIdAndDeleted(reportId, false)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Report details for a report with id " + reportId + " not found")
                 );
