@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b347fa41-9390-4670-a1ae-4d99f34a42d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/config/TestConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/ReportControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-five-reports.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/database/insert-report-into-database.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/controller/AuthControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/controller/AuthControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bond/holder/LinksHolder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +21,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -85,6 +86,9 @@
     "JUnit.CompanyServiceImplTest.update_ValidInput_ReturnsValidResponse.executor": "Run",
     "JUnit.ReportControllerTest.create_ValidRequest_Success.executor": "Run",
     "JUnit.ReportControllerTest.executor": "Run",
+    "JUnit.ReportControllerTest.getAllReportsForCompany_ValidId_Success.executor": "Run",
+    "JUnit.ReportControllerTest.getAll_ValidId_Success.executor": "Run",
+    "JUnit.ReportControllerTest.getById_ValidId_Success.executor": "Run",
     "JUnit.ReportServiceImplTest.create_NonExistingCompanyId_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.create_NotAllowedToInteractUser_ThrowsException.executor": "Run",
     "JUnit.ReportServiceImplTest.create_ValidInputParams_ReturnsValidDto.executor": "Run",
@@ -179,15 +183,7 @@
       <recent name="com.bond.annotation" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CompanyControllerTest">
-    <configuration name="All in smida_task" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ReportControllerTest.getAll_ValidId_Success">
     <configuration name="AuthControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
@@ -199,22 +195,6 @@
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.AuthControllerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthControllerTest.register_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smida_task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bond.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bond.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.bond.controller.AuthControllerTest" />
-      <option name="METHOD_NAME" value="register_ValidInput_Success" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -234,7 +214,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReportControllerTest.getAllReportsForCompany_ValidId_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smida_task" />
       <extension name="coverage">
         <pattern>
@@ -244,7 +224,40 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.bond.controller" />
       <option name="MAIN_CLASS_NAME" value="com.bond.controller.ReportControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="getAllReportsForCompany_ValidId_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReportControllerTest.getAll_ValidId_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.ReportControllerTest" />
+      <option name="METHOD_NAME" value="getAll_ValidId_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReportControllerTest.getById_ValidId_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smida_task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bond.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bond.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bond.controller.ReportControllerTest" />
+      <option name="METHOD_NAME" value="getById_ValidId_Success" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -293,20 +306,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.AuthControllerTest" />
-      <item itemvalue="JUnit.AuthControllerTest.register_ValidInput_Success" />
-      <item itemvalue="JUnit.All in smida_task" />
+      <item itemvalue="JUnit.ReportControllerTest.getAllReportsForCompany_ValidId_Success" />
+      <item itemvalue="JUnit.ReportControllerTest.getAll_ValidId_Success" />
+      <item itemvalue="JUnit.ReportControllerTest.getById_ValidId_Success" />
       <item itemvalue="JUnit.CompanyControllerTest" />
-      <item itemvalue="JUnit.ReportControllerTest" />
       <item itemvalue="Remote JVM Debug.Unnamed" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReportControllerTest.getAll_ValidId_Success" />
+        <item itemvalue="JUnit.ReportControllerTest.getAllReportsForCompany_ValidId_Success" />
+        <item itemvalue="JUnit.ReportControllerTest.getById_ValidId_Success" />
         <item itemvalue="JUnit.CompanyControllerTest" />
         <item itemvalue="JUnit.AuthControllerTest" />
-        <item itemvalue="JUnit.AuthControllerTest.register_ValidInput_Success" />
-        <item itemvalue="JUnit.All in smida_task" />
-        <item itemvalue="JUnit.ReportControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -340,7 +353,7 @@
       <workItem from="1717596377596" duration="11789000" />
       <workItem from="1717611824491" duration="10183000" />
       <workItem from="1717622038889" duration="369000" />
-      <workItem from="1717654124705" duration="330000" />
+      <workItem from="1717654124705" duration="2169000" />
     </task>
     <servers />
   </component>
@@ -372,7 +385,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/bond/controller/UserControllerTest.java</url>
-          <line>287</line>
+          <line>276</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
